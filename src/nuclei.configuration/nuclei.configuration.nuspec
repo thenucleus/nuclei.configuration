@@ -3,25 +3,25 @@
   <metadata>
     <id>Nuclei.Configuration</id>
     <version>$VersionSemantic$</version>
-    <authors>P. van der Velde</authors>
-    <owners>P. van der Velde</owners>
+    <authors>Metamorpher</authors>
+    <owners>Metamorpher</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
-    <projectUrl>https://github.com/pvandervelde/Nuclei</projectUrl>
+    <projectUrl>https://github.com/Metamorpher/Nuclei.Configuration</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
-      Provides some useful utility source code.
+        Provides a set of classes and functions for configuration handling.
     </description>
     <releaseNotes>
-      $ReleaseNotes$
+      $ReleaseNotesHtmlEncoded$
     </releaseNotes>
     <dependencies>
       $Dependencies$
     </dependencies>
   </metadata>
   <files>
-    <file src="$DirBin$\Nuclei.Configuration.dll" target="lib\net40" />
-    <file src="$DirBin$\Nuclei.Configuration.pdb" target="lib\net40" />
-    <file src="$DirBin$\Nuclei.Configuration.xml" target="lib\net40" />
+    <file src="$DirSrc$\Nuclei.Configuration\bin\$Configuration$\Nuclei.Configuration.dll" target="lib\net40" />
+    <file src="$DirSrc$\Nuclei.Configuration\bin\$Configuration$\Nuclei.Configuration.pdb" target="lib\net40" />
+    <file src="$DirSrc$\Nuclei.Configuration\bin\$Configuration$\Nuclei.Configuration.xml" target="lib\net40" />
     <file src="$DirSrc$\Nuclei.Configuration\**\*.cs" target="src\Nuclei.Configuration" />
   </files>
 </package>

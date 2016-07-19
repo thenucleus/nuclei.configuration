@@ -1,12 +1,14 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright company="Nuclei">
-//     Copyright 2013 Nuclei. Licensed under the Apache License, Version 2.0.
+// <copyright company="TheNucleus">
+// Copyright (c) TheNucleus. All rights reserved.
+// Licensed under the Apache License, Version 2.0 license. See LICENCE.md file in the project root for full license information.
 // </copyright>
 //-----------------------------------------------------------------------
 
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using Nuclei.Configuration.Properties;
 
 namespace Nuclei.Configuration
 {
@@ -72,13 +74,13 @@ namespace Nuclei.Configuration
         /// <summary>
         /// The name of the configuration section that the current key links to.
         /// </summary>
-        private readonly string m_Name;
+        private readonly string _name;
 
         /// <summary>
         /// The type of object to which the data in the current configuration section
         /// should be translated.
         /// </summary>
-        private readonly Type m_TranslateTo;
+        private readonly Type _translateTo;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfigurationKey"/> class.
@@ -96,14 +98,25 @@ namespace Nuclei.Configuration
         /// </exception>
         public ConfigurationKey(string name, Type translateTo)
         {
+            if (name == null)
             {
-                Lokad.Enforce.Argument(() => name);
-                Lokad.Enforce.Argument(() => name, Lokad.Rules.StringIs.NotEmpty);
-                Lokad.Enforce.Argument(() => translateTo);
+                throw new ArgumentNullException("name");
             }
 
-            m_Name = name;
-            m_TranslateTo = translateTo;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException(
+                    Resources.Exceptions_Messages_ParameterShouldNotBeAnEmptyString,
+                    "name");
+            }
+
+            if (translateTo == null)
+            {
+                throw new ArgumentNullException("translateTo");
+            }
+
+            _name = name;
+            _translateTo = translateTo;
         }
 
         /// <summary>
@@ -113,7 +126,7 @@ namespace Nuclei.Configuration
         {
             get
             {
-                return m_Name;
+                return _name;
             }
         }
 
@@ -124,7 +137,7 @@ namespace Nuclei.Configuration
         {
             get
             {
-                return m_TranslateTo;
+                return _translateTo;
             }
         }
 
@@ -136,7 +149,9 @@ namespace Nuclei.Configuration
         ///     <see langword="true"/> if the specified <see cref="ConfigurationKey"/> is equal to this instance;
         ///     otherwise, <see langword="false"/>.
         /// </returns>
-        [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1628:DocumentationTextMustBeginWithACapitalLetter",
+        [SuppressMessage(
+            "Microsoft.StyleCop.CSharp.DocumentationRules",
+            "SA1628:DocumentationTextMustBeginWithACapitalLetter",
             Justification = "Documentation can start with a language keyword")]
         public bool Equals(ConfigurationKey other)
         {
@@ -152,14 +167,16 @@ namespace Nuclei.Configuration
         }
 
         /// <summary>
-        /// Determines whether the specified <see cref="System.Object"/> is equal to this instance.
+        /// Determines whether the specified <see cref="object"/> is equal to this instance.
         /// </summary>
-        /// <param name="obj">The <see cref="System.Object"/> to compare with this instance.</param>
+        /// <param name="obj">The <see cref="object"/> to compare with this instance.</param>
         /// <returns>
-        ///     <see langword="true"/> if the specified <see cref="System.Object"/> is equal to this instance;
+        ///     <see langword="true"/> if the specified <see cref="object"/> is equal to this instance;
         ///     otherwise, <see langword="false"/>.
         /// </returns>
-        [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1628:DocumentationTextMustBeginWithACapitalLetter",
+        [SuppressMessage(
+            "Microsoft.StyleCop.CSharp.DocumentationRules",
+            "SA1628:DocumentationTextMustBeginWithACapitalLetter",
             Justification = "Documentation can start with a language keyword")]
         public override bool Equals(object obj)
         {
@@ -198,10 +215,10 @@ namespace Nuclei.Configuration
         }
 
         /// <summary>
-        /// Returns a <see cref="System.String"/> that represents this instance.
+        /// Returns a <see cref="string"/> that represents this instance.
         /// </summary>
         /// <returns>
-        /// A <see cref="System.String"/> that represents this instance.
+        /// A <see cref="string"/> that represents this instance.
         /// </returns>
         public override string ToString()
         {

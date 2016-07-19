@@ -1,6 +1,7 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright company="Nuclei">
-//     Copyright 2013 Nuclei. Licensed under the Apache License, Version 2.0.
+// <copyright company="TheNucleus">
+// Copyright (c) TheNucleus. All rights reserved.
+// Licensed under the Apache License, Version 2.0 license. See LICENCE.md file in the project root for full license information.
 // </copyright>
 //-----------------------------------------------------------------------
 
@@ -20,7 +21,7 @@ namespace Nuclei.Configuration
     /// </summary>
     public sealed class XmlConfiguration : IConfiguration
     {
-        private readonly Dictionary<ConfigurationKey, object> m_Values
+        private readonly Dictionary<ConfigurationKey, object> _values
             = new Dictionary<ConfigurationKey, object>();
 
         /// <summary>
@@ -39,10 +40,21 @@ namespace Nuclei.Configuration
         /// </exception>
         public XmlConfiguration(IEnumerable<ConfigurationKey> knownKeys, string sectionPath)
         {
+            if (knownKeys == null)
             {
-                Lokad.Enforce.Argument(() => knownKeys);
-                Lokad.Enforce.Argument(() => sectionPath);
-                Lokad.Enforce.Argument(() => sectionPath, Lokad.Rules.StringIs.NotEmpty);
+                throw new ArgumentNullException("knownKeys");
+            }
+
+            if (sectionPath == null)
+            {
+                throw new ArgumentNullException("sectionPath");
+            }
+
+            if (string.IsNullOrWhiteSpace(sectionPath))
+            {
+                throw new ArgumentException(
+                    Resources.Exceptions_Messages_ParameterShouldNotBeAnEmptyString,
+                    "sectionPath");
             }
 
             var sections = ConfigurationManager.GetSection(sectionPath) as IEnumerable<XmlNode>;
@@ -70,7 +82,7 @@ namespace Nuclei.Configuration
 
                         if (data != null)
                         {
-                            m_Values.Add(key, data);
+                            _values.Add(key, data);
                         }
                     }
                 }
@@ -88,11 +100,13 @@ namespace Nuclei.Configuration
         /// <returns>
         /// <see langword="true" /> if there is a value for the given key; otherwise, <see langword="false"/>.
         /// </returns>
-        [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1628:DocumentationTextMustBeginWithACapitalLetter",
+        [SuppressMessage(
+            "Microsoft.StyleCop.CSharp.DocumentationRules",
+            "SA1628:DocumentationTextMustBeginWithACapitalLetter",
             Justification = "Documentation can start with a language keyword")]
         public bool HasValueFor(ConfigurationKey key)
         {
-            return (key != null) && m_Values.ContainsKey(key);
+            return (key != null) && _values.ContainsKey(key);
         }
 
         /// <summary>
@@ -111,14 +125,19 @@ namespace Nuclei.Configuration
         /// </exception>
         public T Value<T>(ConfigurationKey key)
         {
+            if (key == null)
             {
-                Lokad.Enforce.Argument(() => key);
-                Lokad.Enforce.With<ArgumentException>(
-                    m_Values.ContainsKey(key),
-                    Resources.Exceptions_Messages_UnknownConfigurationKey);
+                throw new ArgumentNullException("key");
             }
 
-            var obj = m_Values[key];
+            if (!_values.ContainsKey(key))
+            {
+                throw new ArgumentException(
+                    Resources.Exceptions_Messages_UnknownConfigurationKey,
+                    "key");
+            }
+
+            var obj = _values[key];
             return (T)obj;
         }
     }

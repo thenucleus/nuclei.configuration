@@ -1,6 +1,7 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright company="Nuclei">
-//     Copyright 2013 Nuclei. Licensed under the Apache License, Version 2.0.
+// <copyright company="TheNucleus">
+// Copyright (c) TheNucleus. All rights reserved.
+// Licensed under the Apache License, Version 2.0 license. See LICENCE.md file in the project root for full license information.
 // </copyright>
 //-----------------------------------------------------------------------
 
@@ -14,16 +15,18 @@ using NUnit.Framework;
 namespace Nuclei.Configuration
 {
     [TestFixture]
-    [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented",
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.DocumentationRules",
+        "SA1600:ElementsMustBeDocumented",
         Justification = "Unit tests do not need documentation.")]
     public sealed class ConfigurationKeyTest : EqualityContractVerifierTest
     {
         private sealed class MessageIdEqualityContractVerifier : EqualityContractVerifier<ConfigurationKey>
         {
-            private readonly ConfigurationKey m_First
+            private readonly ConfigurationKey _first
                 = new ConfigurationKey("a", typeof(string));
 
-            private readonly ConfigurationKey m_Second
+            private readonly ConfigurationKey _second
                  = new ConfigurationKey("b", typeof(int));
 
             protected override ConfigurationKey Copy(ConfigurationKey original)
@@ -35,7 +38,7 @@ namespace Nuclei.Configuration
             {
                 get
                 {
-                    return m_First;
+                    return _first;
                 }
             }
 
@@ -43,7 +46,7 @@ namespace Nuclei.Configuration
             {
                 get
                 {
-                    return m_Second;
+                    return _second;
                 }
             }
 
@@ -56,10 +59,10 @@ namespace Nuclei.Configuration
             }
         }
 
-        private sealed class MessageIdHashcodeContractVerfier : HashcodeContractVerifier
+        private sealed class MessageIdHashCodeContractVerfier : HashCodeContractVerifier
         {
-            private readonly IEnumerable<ConfigurationKey> m_DistinctInstances
-                = new List<ConfigurationKey> 
+            private readonly IEnumerable<ConfigurationKey> _distinctInstances
+                = new List<ConfigurationKey>
                      {
                         new ConfigurationKey("a", typeof(string)),
                         new ConfigurationKey("b", typeof(int)),
@@ -70,21 +73,21 @@ namespace Nuclei.Configuration
                         new ConfigurationKey("g", typeof(object)),
                      };
 
-            protected override IEnumerable<int> GetHashcodes()
+            protected override IEnumerable<int> GetHashCodes()
             {
-                return m_DistinctInstances.Select(i => i.GetHashCode());
+                return _distinctInstances.Select(i => i.GetHashCode());
             }
         }
 
-        private readonly MessageIdHashcodeContractVerfier m_HashcodeVerifier = new MessageIdHashcodeContractVerfier();
+        private readonly MessageIdHashCodeContractVerfier _hashCodeVerifier = new MessageIdHashCodeContractVerfier();
 
-        private readonly MessageIdEqualityContractVerifier m_EqualityVerifier = new MessageIdEqualityContractVerifier();
+        private readonly MessageIdEqualityContractVerifier _equalityVerifier = new MessageIdEqualityContractVerifier();
 
-        protected override HashcodeContractVerifier HashContract
+        protected override HashCodeContractVerifier HashContract
         {
             get
             {
-                return m_HashcodeVerifier;
+                return _hashCodeVerifier;
             }
         }
 
@@ -92,7 +95,7 @@ namespace Nuclei.Configuration
         {
             get
             {
-                return m_EqualityVerifier;
+                return _equalityVerifier;
             }
         }
 
