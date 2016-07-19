@@ -646,7 +646,7 @@
         <!--
             The locations of the files that should be analyzed by FxCop.
         -->
-        <FxCopFiles Include="$(DirSrc)\**\bin\**\nuclei.dll"
+        <FxCopFiles Include="$(DirSrc)\**\bin\**\nuclei.configuration.dll"
                     Exclude="$(DirSrc)\**\bin\**\Test.*.dll">
             <TargetFramework>4.0</TargetFramework>
         </FxCopFiles>
