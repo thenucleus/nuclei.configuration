@@ -101,7 +101,7 @@
             * Installer information
         -->
         <ProductDescription>
-            Nuclei is a collection of libraries containing classes and functions for inter-application interaction via a command mechanism, diagnostics, configuration handling, exception handling and assembly location and loading.
+            Nuclei.Configuration is a collection of libraries containing classes and functions for configuration handling.
         </ProductDescription>
 
         <!--
