@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigurationKeyTest.cs" />
+    <Compile Include="HierarchicalConfigurationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <!-- Indicate that we depend on the SolutionLevel build projects -->
