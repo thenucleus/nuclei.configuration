@@ -1,0 +1,34 @@
+
+# Nuclei.Configuration
+
+
+## Configuration keys
+
+To define a configuration key create an instance of the `ConfigurationKey` class with the type of the value that should be retrieved and the 'path' to the value in the
+configuration store.
+
+[!code-csharp[ConfigurationKey](..\..\Nuclei.Configuration.Samples\XmlConfigurationSample.cs?range=19)]
+
+
+## XmlConfiguration
+
+The `XmlConfiguration` class gets configuration data from the application configuration file. To store information in the configuration file create
+a configuration section that will hold the configuration values and insert the desired values. Each value is marked by a key and stored so that the
+.NET xml serializer can read the values.
+
+[!code-xml[Configuration sample](..\..\Nuclei.Configuration.Samples\app.config)]
+
+Create the `XmlConfiguration` instance and provide the name of the configuration section.
+
+[!code-csharp[XmlConfiguration.HasValueFor](..\..\Nuclei.Configuration.Samples\XmlConfigurationSample.cs?range=19-22)]
+
+[!code-csharp[XmlConfiguration.Value](..\..\Nuclei.Configuration.Samples\XmlConfigurationSample.cs?range=32-35)]
+
+
+## NullConfiguration
+
+The `NullConfiguration` class does not store any configuration values. Return values are the default value for the type of data that is supposed to be stored.
+
+[!code-csharp[NullConfiguration.HasValueFor](..\..\Nuclei.Configuration.Samples\NullConfigurationSample.cs?range=18-21)]
+
+[!code-csharp[NullConfiguration.Value](..\..\Nuclei.Configuration.Samples\NullConfigurationSample.cs?range=29-32)]
