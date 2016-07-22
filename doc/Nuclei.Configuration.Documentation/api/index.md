@@ -24,6 +24,17 @@ Create the `ApplicationConfiguration` instance and provide the name of the confi
 [!code-csharp[ApplicationConfiguration.Value](..\..\Nuclei.Configuration.Samples\ApplicationConfigurationSample.cs?range=32-35)]
 
 
+## HierarchicalConfiguration
+
+The `HierarchicalConfiguration` class does not store any configuration values itself. Instead it stores a collection of `IConfiguration` instances and retrieves the
+configuration data from the items in that collection. If multiple configurations have a configuration for a given configurations key then the first configuration
+to provide the configuration value is used.
+
+[!code-csharp[HierarchicalConfiguration.HasValueFor](..\..\Nuclei.Configuration.Samples\HierarchicalConfigurationSample.cs?range=19-26)]
+
+[!code-csharp[HierarchicalConfiguration.Value](..\..\Nuclei.Configuration.Samples\HierarchicalConfigurationSample.cs?range=36-43)]
+
+
 ## NullConfiguration
 
 The `NullConfiguration` class does not store any configuration values. Return values are the default value for the type of data that is supposed to be stored.
