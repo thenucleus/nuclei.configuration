@@ -17,15 +17,15 @@ using Nuclei.Configuration.Properties;
 namespace Nuclei.Configuration
 {
     /// <summary>
-    /// Defines a configuration object that gets its value from one or more XML files.
+    /// Defines a <see cref="IConfiguration"/> object that gets its value from the application configuration file.
     /// </summary>
-    public sealed class XmlConfiguration : IConfiguration
+    public sealed class ApplicationConfiguration : IConfiguration
     {
         private readonly Dictionary<ConfigurationKey, object> _values
             = new Dictionary<ConfigurationKey, object>();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="XmlConfiguration"/> class.
+        /// Initializes a new instance of the <see cref="ApplicationConfiguration"/> class.
         /// </summary>
         /// <param name="knownKeys">The collection containing all the known configuration keys for the application.</param>
         /// <param name="sectionPath">The path of the section in the configuration file.</param>
@@ -38,7 +38,7 @@ namespace Nuclei.Configuration
         /// <exception cref="ArgumentException">
         ///     Thrown if <paramref name="sectionPath"/> is an empty string.
         /// </exception>
-        public XmlConfiguration(IEnumerable<ConfigurationKey> knownKeys, string sectionPath)
+        public ApplicationConfiguration(IEnumerable<ConfigurationKey> knownKeys, string sectionPath)
         {
             if (knownKeys == null)
             {

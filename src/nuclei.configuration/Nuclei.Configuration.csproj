@@ -70,7 +70,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="XmlConfiguration.cs" />
+    <Compile Include="ApplicationConfiguration.cs" />
     <Compile Include="ConfigurationSectionToXmlTranslator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -11,17 +11,17 @@ using NUnit.Framework;
 namespace Nuclei.Configuration.Samples
 {
     [TestFixture]
-    public sealed class XmlConfigurationSample
+    public sealed class ApplicationConfigurationSample
     {
         [Test]
         public void HasValue()
         {
             var key = new ConfigurationKey("Key1", typeof(int));
 
-            var configuration = new XmlConfiguration(new[] { key }, "samples");
+            var configuration = new ApplicationConfiguration(new[] { key }, "samples");
             var hasValue = configuration.HasValueFor(key);
 
-            Assert.IsFalse(hasValue);
+            Assert.IsTrue(hasValue);
         }
 
         [Test]
@@ -30,10 +30,10 @@ namespace Nuclei.Configuration.Samples
             try
             {
                 var key = new ConfigurationKey("Key1", typeof(int));
-                var configuration = new XmlConfiguration(new[] { key }, "samples");
+                var configuration = new ApplicationConfiguration(new[] { key }, "samples");
 
                 var value = configuration.Value<int>(key);
-                Assert.AreEqual(0, value);
+                Assert.AreEqual(10, value);
             }
             catch (ArgumentException e)
             {
