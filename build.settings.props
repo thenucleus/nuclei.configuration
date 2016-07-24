@@ -346,8 +346,8 @@
         Additional parameters can be provided through the 'TemplateTokens' ItemGroup below.
     -->
     <ItemGroup>
-        <BuildFilesToGenerate Include="$(DirDoc)\Nuclei.Documentation\docfx.json">
-            <Template>$(DirDoc)\Nuclei.Documentation\template.docfx.json</Template>
+        <BuildFilesToGenerate Include="$(DirDoc)\Nuclei.Configuration.Documentation\docfx.json">
+            <Template>$(DirDoc)\Nuclei.Configuration.Documentation\template.docfx.json</Template>
             <Encoding>UTF-8</Encoding>
         </BuildFilesToGenerate>
     </ItemGroup>

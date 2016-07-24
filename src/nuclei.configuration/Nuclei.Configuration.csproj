@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="ConfigurationHelpers.cs" />
     <Compile Include="ConfigurationKey.cs" />
+    <Compile Include="HierarchicalConfiguration.cs" />
     <Compile Include="IConfiguration.cs" />
     <Compile Include="NullConfiguration.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -70,7 +71,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="XmlConfiguration.cs" />
+    <Compile Include="ApplicationConfiguration.cs" />
     <Compile Include="ConfigurationSectionToXmlTranslator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

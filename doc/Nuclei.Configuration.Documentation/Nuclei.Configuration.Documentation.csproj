@@ -56,10 +56,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="template.docfx.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="template.docfx.json" />
+    <Content Include="articles\toc.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="articles\intro.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -86,12 +89,12 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="..\..\packages\docfx.msbuild.2.1.0\build\docfx.msbuild.targets" Condition="Exists('..\..\packages\docfx.msbuild.2.1.0\build\docfx.msbuild.targets')" />
+  <Import Project="..\..\packages\docfx.msbuild.2.2.2\build\docfx.msbuild.targets" Condition="Exists('..\..\packages\docfx.msbuild.2.2.2\build\docfx.msbuild.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\docfx.msbuild.2.1.0\build\docfx.msbuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\docfx.msbuild.2.1.0\build\docfx.msbuild.targets'))" />
+    <Error Condition="!Exists('..\..\packages\docfx.msbuild.2.2.2\build\docfx.msbuild.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\docfx.msbuild.2.2.2\build\docfx.msbuild.targets'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

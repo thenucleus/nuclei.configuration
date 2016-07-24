@@ -54,9 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="HierarchicalConfigurationSample.cs" />
     <Compile Include="NullConfigurationSample.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XmlConfigurationSample.cs" />
+    <Compile Include="ApplicationConfigurationSample.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
