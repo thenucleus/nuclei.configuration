@@ -24,6 +24,16 @@ Create the `ApplicationConfiguration` instance and provide the name of the confi
 [!code-csharp[ApplicationConfiguration.Value](..\..\Nuclei.Configuration.Samples\ApplicationConfigurationSample.cs?range=32-35)]
 
 
+# ConstantConfiguration
+
+The `ConstantConfiguration` class allows the user to provide a set of configuration keys and the values that should be stored for these keys. In combination with the
+`HierarchicalConfiguration` the `ConstantConfiguration` allows the user to provide a series of constant values as fall back for each of the known configuration keys.
+
+[!code-csharp[ConstantConfiguration.HasValueFor](..\..\Nuclei.Configuration.Samples\ConstantConfigurationSample.cs?range=19-26)]
+
+[!code-csharp[ConstantConfiguration.Value](..\..\Nuclei.Configuration.Samples\ConstantConfigurationSample.cs?range=34-42)]
+
+
 ## HierarchicalConfiguration
 
 The `HierarchicalConfiguration` class does not store any configuration values itself. Instead it stores a collection of `IConfiguration` instances and retrieves the
