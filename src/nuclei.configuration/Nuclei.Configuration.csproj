@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="ConfigurationHelpers.cs" />
     <Compile Include="ConfigurationKey.cs" />
+    <Compile Include="ConfigurationKeyBase.cs" />
     <Compile Include="ConstantConfiguration.cs" />
     <Compile Include="HierarchicalConfiguration.cs" />
     <Compile Include="IConfiguration.cs" />
