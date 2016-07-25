@@ -19,7 +19,7 @@ namespace Nuclei.Configuration
         /// <returns>
         /// <see langword="true" /> if there is a value for the given key; otherwise, <see langword="false"/>.
         /// </returns>
-        public bool HasValueFor(ConfigurationKey key)
+        public bool HasValueFor(ConfigurationKeyBase key)
         {
             return false;
         }
@@ -32,7 +32,20 @@ namespace Nuclei.Configuration
         /// <returns>
         /// The desired value.
         /// </returns>
-        public T Value<T>(ConfigurationKey key)
+        public T Value<T>(ConfigurationKeyBase key)
+        {
+            return default(T);
+        }
+
+        /// <summary>
+        /// Returns the value for the given configuration key.
+        /// </summary>
+        /// <typeparam name="T">The type of the return value.</typeparam>
+        /// <param name="key">The configuration key.</param>
+        /// <returns>
+        /// The desired value.
+        /// </returns>
+        public T Value<T>(ConfigurationKey<T> key)
         {
             return default(T);
         }

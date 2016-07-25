@@ -51,7 +51,7 @@ namespace Nuclei.Configuration
             "Microsoft.StyleCop.CSharp.DocumentationRules",
             "SA1628:DocumentationTextMustBeginWithACapitalLetter",
             Justification = "Documentation can start with a language keyword")]
-        public bool HasValueFor(ConfigurationKey key)
+        public bool HasValueFor(ConfigurationKeyBase key)
         {
             if (key == null)
             {
@@ -83,7 +83,7 @@ namespace Nuclei.Configuration
         /// <exception cref="ArgumentException">
         ///     Thrown if <paramref name="key"/> does not match any of the registered configuration keys.
         /// </exception>
-        public T Value<T>(ConfigurationKey key)
+        public T Value<T>(ConfigurationKeyBase key)
         {
             if (key == null)
             {
@@ -101,6 +101,19 @@ namespace Nuclei.Configuration
             throw new ArgumentException(
                 Resources.Exceptions_Messages_UnknownConfigurationKey,
                 "key");
+        }
+
+        /// <summary>
+        /// Returns the value for the given configuration key.
+        /// </summary>
+        /// <typeparam name="T">The type of the return value.</typeparam>
+        /// <param name="key">The configuration key.</param>
+        /// <returns>
+        /// The desired value.
+        /// </returns>
+        public T Value<T>(ConfigurationKey<T> key)
+        {
+            return Value<T>((ConfigurationKeyBase)key);
         }
     }
 }
