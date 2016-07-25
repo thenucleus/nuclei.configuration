@@ -21,8 +21,8 @@ namespace Nuclei.Configuration
     /// </summary>
     public sealed class ApplicationConfiguration : IConfiguration
     {
-        private readonly Dictionary<ConfigurationKey, object> _values
-            = new Dictionary<ConfigurationKey, object>();
+        private readonly Dictionary<ConfigurationKeyBase, object> _values
+            = new Dictionary<ConfigurationKeyBase, object>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationConfiguration"/> class.
@@ -38,7 +38,7 @@ namespace Nuclei.Configuration
         /// <exception cref="ArgumentException">
         ///     Thrown if <paramref name="sectionPath"/> is an empty string.
         /// </exception>
-        public ApplicationConfiguration(IEnumerable<ConfigurationKey> knownKeys, string sectionPath)
+        public ApplicationConfiguration(IEnumerable<ConfigurationKeyBase> knownKeys, string sectionPath)
         {
             if (knownKeys == null)
             {
@@ -104,7 +104,7 @@ namespace Nuclei.Configuration
             "Microsoft.StyleCop.CSharp.DocumentationRules",
             "SA1628:DocumentationTextMustBeginWithACapitalLetter",
             Justification = "Documentation can start with a language keyword")]
-        public bool HasValueFor(ConfigurationKey key)
+        public bool HasValueFor(ConfigurationKeyBase key)
         {
             return (key != null) && _values.ContainsKey(key);
         }
@@ -123,7 +123,7 @@ namespace Nuclei.Configuration
         /// <exception cref="ArgumentException">
         ///     Thrown if <paramref name="key"/> does not match any of the registered configuration keys.
         /// </exception>
-        public T Value<T>(ConfigurationKey key)
+        public T Value<T>(ConfigurationKeyBase key)
         {
             if (key == null)
             {
@@ -139,6 +139,19 @@ namespace Nuclei.Configuration
 
             var obj = _values[key];
             return (T)obj;
+        }
+
+        /// <summary>
+        /// Returns the value for the given configuration key.
+        /// </summary>
+        /// <typeparam name="T">The type of the return value.</typeparam>
+        /// <param name="key">The configuration key.</param>
+        /// <returns>
+        /// The desired value.
+        /// </returns>
+        public T Value<T>(ConfigurationKey<T> key)
+        {
+            return Value<T>((ConfigurationKeyBase)key);
         }
     }
 }

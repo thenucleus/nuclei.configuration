@@ -25,7 +25,7 @@ namespace Nuclei.Configuration
             "Microsoft.StyleCop.CSharp.DocumentationRules",
             "SA1628:DocumentationTextMustBeginWithACapitalLetter",
             Justification = "Documentation can start with a language keyword")]
-        bool HasValueFor(ConfigurationKey key);
+        bool HasValueFor(ConfigurationKeyBase key);
 
         /// <summary>
         /// Returns the value for the given configuration key.
@@ -35,6 +35,16 @@ namespace Nuclei.Configuration
         /// <returns>
         /// The desired value.
         /// </returns>
-        T Value<T>(ConfigurationKey key);
+        T Value<T>(ConfigurationKeyBase key);
+
+        /// <summary>
+        /// Returns the value for the given configuration key.
+        /// </summary>
+        /// <typeparam name="T">The type of the return value.</typeparam>
+        /// <param name="key">The configuration key.</param>
+        /// <returns>
+        /// The desired value.
+        /// </returns>
+        T Value<T>(ConfigurationKey<T> key);
     }
 }

@@ -16,8 +16,8 @@ namespace Nuclei.Configuration
     /// </summary>
     public sealed class ConstantConfiguration : IConfiguration
     {
-        private readonly Dictionary<ConfigurationKey, object> _values
-            = new Dictionary<ConfigurationKey, object>();
+        private readonly Dictionary<ConfigurationKeyBase, object> _values
+            = new Dictionary<ConfigurationKeyBase, object>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConstantConfiguration"/> class.
@@ -26,7 +26,7 @@ namespace Nuclei.Configuration
         /// <exception cref="ArgumentNullException">
         ///     Thrown if <paramref name="values"/> is <see langword="null" />.
         /// </exception>
-        public ConstantConfiguration(IDictionary<ConfigurationKey, object> values)
+        public ConstantConfiguration(IDictionary<ConfigurationKeyBase, object> values)
         {
             if (values == null)
             {
@@ -50,7 +50,7 @@ namespace Nuclei.Configuration
             "Microsoft.StyleCop.CSharp.DocumentationRules",
             "SA1628:DocumentationTextMustBeginWithACapitalLetter",
             Justification = "Documentation can start with a language keyword")]
-        public bool HasValueFor(ConfigurationKey key)
+        public bool HasValueFor(ConfigurationKeyBase key)
         {
             return (key != null) && _values.ContainsKey(key);
         }
@@ -63,7 +63,7 @@ namespace Nuclei.Configuration
         /// <returns>
         /// The desired value.
         /// </returns>
-        public T Value<T>(ConfigurationKey key)
+        public T Value<T>(ConfigurationKeyBase key)
         {
             if (HasValueFor(key))
             {
@@ -72,6 +72,19 @@ namespace Nuclei.Configuration
             }
 
             return default(T);
+        }
+
+        /// <summary>
+        /// Returns the value for the given configuration key.
+        /// </summary>
+        /// <typeparam name="T">The type of the return value.</typeparam>
+        /// <param name="key">The configuration key.</param>
+        /// <returns>
+        /// The desired value.
+        /// </returns>
+        public T Value<T>(ConfigurationKey<T> key)
+        {
+            return Value<T>((ConfigurationKeyBase)key);
         }
     }
 }

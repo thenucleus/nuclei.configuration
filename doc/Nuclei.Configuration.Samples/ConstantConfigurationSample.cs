@@ -16,30 +16,30 @@ namespace Nuclei.Configuration.Samples
         [Test]
         public void HasValue()
         {
-            var key = new ConfigurationKey("my_property", typeof(int));
+            var key = new ConfigurationKey<int>("my_property");
 
             var configuration = new ConstantConfiguration(
-                 new Dictionary<ConfigurationKey, object>
+                 new Dictionary<ConfigurationKeyBase, object>
                      {
                          [key] = 10
                      });
             var hasValue = configuration.HasValueFor(key);
 
-            Assert.IsFalse(hasValue);
+            Assert.IsTrue(hasValue);
         }
 
         [Test]
         public void ValueFor()
         {
             var constantValue = 10;
-            var key = new ConfigurationKey("my_property", typeof(int));
+            var key = new ConfigurationKey<int>("my_property");
 
             var configuration = new ConstantConfiguration(
-                 new Dictionary<ConfigurationKey, object>
+                 new Dictionary<ConfigurationKeyBase, object>
                  {
                      [key] = constantValue
                  });
-            var value = configuration.Value<int>(key);
+            var value = configuration.Value(key);
 
             Assert.AreEqual(constantValue, value);
         }

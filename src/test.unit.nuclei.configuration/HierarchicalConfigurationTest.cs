@@ -29,10 +29,10 @@ namespace Nuclei.Configuration
         [Test]
         public void HasValueWithKnownKey()
         {
-            var key = new ConfigurationKey("a", typeof(string));
+            var key = new ConfigurationKey<string>("a");
             var sub = new Mock<IConfiguration>();
             {
-                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(true)
                     .Verifiable();
             }
@@ -40,23 +40,23 @@ namespace Nuclei.Configuration
             var configuration = new HierarchicalConfiguration(new IConfiguration[] { sub.Object });
             Assert.IsTrue(configuration.HasValueFor(key));
 
-            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
+            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
         }
 
         [Test]
         public void HasValueWithMultipleConfigurationsAndKnownKey()
         {
-            var key = new ConfigurationKey("a", typeof(string));
+            var key = new ConfigurationKey<string>("a");
             var sub1 = new Mock<IConfiguration>();
             {
-                sub1.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub1.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(false)
                     .Verifiable();
             }
 
             var sub2 = new Mock<IConfiguration>();
             {
-                sub2.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub2.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(true)
                     .Verifiable();
             }
@@ -69,24 +69,24 @@ namespace Nuclei.Configuration
                 });
 
             Assert.IsTrue(configuration.HasValueFor(key));
-            sub1.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
-            sub2.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
+            sub1.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
+            sub2.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
         }
 
         [Test]
         public void HasValueWithMultipleConfigurationsAndUnknownKey()
         {
-            var key = new ConfigurationKey("a", typeof(string));
+            var key = new ConfigurationKey<string>("a");
             var sub1 = new Mock<IConfiguration>();
             {
-                sub1.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub1.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(false)
                     .Verifiable();
             }
 
             var sub2 = new Mock<IConfiguration>();
             {
-                sub2.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub2.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(false)
                     .Verifiable();
             }
@@ -99,8 +99,8 @@ namespace Nuclei.Configuration
                 });
 
             Assert.IsFalse(configuration.HasValueFor(key));
-            sub1.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
-            sub2.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
+            sub1.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
+            sub2.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
         }
 
         [Test]
@@ -108,7 +108,7 @@ namespace Nuclei.Configuration
         {
             var sub = new Mock<IConfiguration>();
             {
-                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(true)
                     .Verifiable();
             }
@@ -116,16 +116,16 @@ namespace Nuclei.Configuration
             var configuration = new HierarchicalConfiguration(new IConfiguration[] { sub.Object });
             Assert.IsFalse(configuration.HasValueFor(null));
 
-            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Never());
+            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Never());
         }
 
         [Test]
         public void HasValueWithUnknownKey()
         {
-            var key = new ConfigurationKey("a", typeof(string));
+            var key = new ConfigurationKey<string>("a");
             var sub = new Mock<IConfiguration>();
             {
-                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(false)
                     .Verifiable();
             }
@@ -133,51 +133,51 @@ namespace Nuclei.Configuration
             var configuration = new HierarchicalConfiguration(new IConfiguration[] { sub.Object });
             Assert.IsFalse(configuration.HasValueFor(key));
 
-            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
+            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
         }
 
         [Test]
         public void ValueWithKnownKey()
         {
             var value = "a";
-            var key = new ConfigurationKey("b", typeof(string));
+            var key = new ConfigurationKey<string>("b");
             var sub = new Mock<IConfiguration>();
             {
-                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(true)
                     .Verifiable();
-                sub.Setup(s => s.Value<string>(It.IsAny<ConfigurationKey>()))
+                sub.Setup(s => s.Value(It.IsAny<ConfigurationKey<string>>()))
                     .Returns(value)
                     .Verifiable();
             }
 
             var configuration = new HierarchicalConfiguration(new IConfiguration[] { sub.Object });
-            Assert.AreSame(value, configuration.Value<string>(key));
+            Assert.AreSame(value, configuration.Value(key));
 
-            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
-            sub.Verify(s => s.Value<string>(It.IsAny<ConfigurationKey>()), Times.Once());
+            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
+            sub.Verify(s => s.Value(It.IsAny<ConfigurationKey<string>>()), Times.Once());
         }
 
         [Test]
         public void ValueWithMultipleConfigurationsAndKnownKey()
         {
             var value = "a";
-            var key = new ConfigurationKey("b", typeof(string));
+            var key = new ConfigurationKey<string>("b");
             var sub1 = new Mock<IConfiguration>();
             {
-                sub1.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub1.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(false)
                     .Verifiable();
-                sub1.Setup(s => s.Value<string>(It.IsAny<ConfigurationKey>()))
+                sub1.Setup(s => s.Value(It.IsAny<ConfigurationKey<string>>()))
                     .Verifiable();
             }
 
             var sub2 = new Mock<IConfiguration>();
             {
-                sub2.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub2.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(true)
                     .Verifiable();
-                sub2.Setup(s => s.Value<string>(It.IsAny<ConfigurationKey>()))
+                sub2.Setup(s => s.Value(It.IsAny<ConfigurationKey<string>>()))
                     .Returns(value)
                     .Verifiable();
             }
@@ -189,34 +189,34 @@ namespace Nuclei.Configuration
                     sub2.Object
                 });
 
-            Assert.AreSame(value, configuration.Value<string>(key));
+            Assert.AreSame(value, configuration.Value(key));
 
-            sub1.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
-            sub1.Verify(s => s.Value<string>(It.IsAny<ConfigurationKey>()), Times.Never());
+            sub1.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
+            sub1.Verify(s => s.Value(It.IsAny<ConfigurationKey<string>>()), Times.Never());
 
-            sub2.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
-            sub2.Verify(s => s.Value<string>(It.IsAny<ConfigurationKey>()), Times.Once());
+            sub2.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
+            sub2.Verify(s => s.Value(It.IsAny<ConfigurationKey<string>>()), Times.Once());
         }
 
         [Test]
         public void ValueWithMultipleConfigurationsAndUnknownKey()
         {
-            var key = new ConfigurationKey("b", typeof(string));
+            var key = new ConfigurationKey<string>("b");
             var sub1 = new Mock<IConfiguration>();
             {
-                sub1.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub1.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(false)
                     .Verifiable();
-                sub1.Setup(s => s.Value<string>(It.IsAny<ConfigurationKey>()))
+                sub1.Setup(s => s.Value(It.IsAny<ConfigurationKey<string>>()))
                     .Verifiable();
             }
 
             var sub2 = new Mock<IConfiguration>();
             {
-                sub2.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub2.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(false)
                     .Verifiable();
-                sub2.Setup(s => s.Value<string>(It.IsAny<ConfigurationKey>()))
+                sub2.Setup(s => s.Value(It.IsAny<ConfigurationKey<string>>()))
                     .Verifiable();
             }
 
@@ -227,13 +227,13 @@ namespace Nuclei.Configuration
                     sub2.Object
                 });
 
-            Assert.Throws<ArgumentException>(() => configuration.Value<string>(key));
+            Assert.Throws<ArgumentException>(() => configuration.Value(key));
 
-            sub1.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
-            sub1.Verify(s => s.Value<string>(It.IsAny<ConfigurationKey>()), Times.Never());
+            sub1.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
+            sub1.Verify(s => s.Value(It.IsAny<ConfigurationKey<string>>()), Times.Never());
 
-            sub2.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
-            sub2.Verify(s => s.Value<string>(It.IsAny<ConfigurationKey>()), Times.Never());
+            sub2.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
+            sub2.Verify(s => s.Value(It.IsAny<ConfigurationKey<string>>()), Times.Never());
         }
 
         [Test]
@@ -241,38 +241,38 @@ namespace Nuclei.Configuration
         {
             var sub = new Mock<IConfiguration>();
             {
-                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(false)
                     .Verifiable();
-                sub.Setup(s => s.Value<string>(It.IsAny<ConfigurationKey>()))
+                sub.Setup(s => s.Value(It.IsAny<ConfigurationKey<string>>()))
                     .Verifiable();
             }
 
             var configuration = new HierarchicalConfiguration(new IConfiguration[] { sub.Object });
             Assert.Throws<ArgumentNullException>(() => configuration.Value<string>(null));
 
-            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Never());
-            sub.Verify(s => s.Value<string>(It.IsAny<ConfigurationKey>()), Times.Never());
+            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Never());
+            sub.Verify(s => s.Value(It.IsAny<ConfigurationKey<string>>()), Times.Never());
         }
 
         [Test]
         public void ValueWithUnknownKey()
         {
-            var key = new ConfigurationKey("b", typeof(string));
+            var key = new ConfigurationKey<string>("b");
             var sub = new Mock<IConfiguration>();
             {
-                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKey>()))
+                sub.Setup(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()))
                     .Returns(false)
                     .Verifiable();
-                sub.Setup(s => s.Value<string>(It.IsAny<ConfigurationKey>()))
+                sub.Setup(s => s.Value(It.IsAny<ConfigurationKey<string>>()))
                     .Verifiable();
             }
 
             var configuration = new HierarchicalConfiguration(new IConfiguration[] { sub.Object });
-            Assert.Throws<ArgumentException>(() => configuration.Value<string>(key));
+            Assert.Throws<ArgumentException>(() => configuration.Value(key));
 
-            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKey>()), Times.Once());
-            sub.Verify(s => s.Value<string>(It.IsAny<ConfigurationKey>()), Times.Never());
+            sub.Verify(s => s.HasValueFor(It.IsAny<ConfigurationKeyBase>()), Times.Once());
+            sub.Verify(s => s.Value(It.IsAny<ConfigurationKey<string>>()), Times.Never());
         }
     }
 }

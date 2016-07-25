@@ -15,7 +15,7 @@ namespace Nuclei.Configuration.Samples
         [Test]
         public void HasValue()
         {
-            var key = new ConfigurationKey("my_property", typeof(int));
+            var key = new ConfigurationKey<int>("my_property");
 
             var configuration = new NullConfiguration();
             var hasValue = configuration.HasValueFor(key);
@@ -26,10 +26,10 @@ namespace Nuclei.Configuration.Samples
         [Test]
         public void ValueFor()
         {
-            var key = new ConfigurationKey("my_property", typeof(int));
+            var key = new ConfigurationKey<int>("my_property");
 
             var configuration = new NullConfiguration();
-            var value = configuration.Value<int>(key);
+            var value = configuration.Value(key);
 
             Assert.AreEqual(default(int), value);
         }
