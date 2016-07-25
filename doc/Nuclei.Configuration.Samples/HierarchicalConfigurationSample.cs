@@ -16,7 +16,7 @@ namespace Nuclei.Configuration.Samples
         [Test]
         public void HasValue()
         {
-            var key = new ConfigurationKey("Key1", typeof(int));
+            var key = new ConfigurationKey<int>("Key1");
 
             var configuration = new HierarchicalConfiguration(
                 new IConfiguration[]
@@ -33,14 +33,14 @@ namespace Nuclei.Configuration.Samples
         {
             try
             {
-                var key = new ConfigurationKey("Key1", typeof(int));
+                var key = new ConfigurationKey<int>("Key1");
                 var configuration = new HierarchicalConfiguration(
                     new IConfiguration[]
                     {
                         new ApplicationConfiguration(new[] { key }, "samples")
                     });
 
-                var value = configuration.Value<int>(key);
+                var value = configuration.Value(key);
                 Assert.AreEqual(10, value);
             }
             catch (ArgumentException e)

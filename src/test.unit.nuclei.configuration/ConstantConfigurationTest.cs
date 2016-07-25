@@ -29,10 +29,10 @@ namespace Nuclei.Configuration
         [Test]
         public void HasValueWithKnownKey()
         {
-            var key = new ConfigurationKey("a", typeof(string));
+            var key = new ConfigurationKey<string>("a");
 
             var configuration = new ConstantConfiguration(
-                new Dictionary<ConfigurationKey, object>
+                new Dictionary<ConfigurationKeyBase, object>
                 {
                     [key] = 10
                 });
@@ -42,16 +42,16 @@ namespace Nuclei.Configuration
         [Test]
         public void HasValueWithNullKey()
         {
-            var configuration = new ConstantConfiguration(new Dictionary<ConfigurationKey, object>());
+            var configuration = new ConstantConfiguration(new Dictionary<ConfigurationKeyBase, object>());
             Assert.IsFalse(configuration.HasValueFor(null));
         }
 
         [Test]
         public void HasValueWithUnknownKey()
         {
-            var key = new ConfigurationKey("a", typeof(string));
+            var key = new ConfigurationKey<string>("a");
 
-            var configuration = new ConstantConfiguration(new Dictionary<ConfigurationKey, object>());
+            var configuration = new ConstantConfiguration(new Dictionary<ConfigurationKeyBase, object>());
             Assert.IsFalse(configuration.HasValueFor(key));
         }
 
@@ -59,28 +59,28 @@ namespace Nuclei.Configuration
         public void ValueWithKnownKey()
         {
             var value = "a";
-            var key = new ConfigurationKey("b", typeof(string));
+            var key = new ConfigurationKey<string>("b");
             var configuration = new ConstantConfiguration(
-                new Dictionary<ConfigurationKey, object>
+                new Dictionary<ConfigurationKeyBase, object>
                 {
                     [key] = value
                 });
-            Assert.AreSame(value, configuration.Value<string>(key));
+            Assert.AreSame(value, configuration.Value(key));
         }
 
         [Test]
         public void ValueWithNullKey()
         {
-            var configuration = new ConstantConfiguration(new Dictionary<ConfigurationKey, object>());
+            var configuration = new ConstantConfiguration(new Dictionary<ConfigurationKeyBase, object>());
             Assert.AreEqual(default(int), configuration.Value<int>(null));
         }
 
         [Test]
         public void ValueWithUnknownKey()
         {
-            var key = new ConfigurationKey("b", typeof(string));
-            var configuration = new ConstantConfiguration(new Dictionary<ConfigurationKey, object>());
-            Assert.AreEqual(default(int), configuration.Value<int>(key));
+            var key = new ConfigurationKey<int>("b");
+            var configuration = new ConstantConfiguration(new Dictionary<ConfigurationKeyBase, object>());
+            Assert.AreEqual(default(int), configuration.Value(key));
         }
     }
 }

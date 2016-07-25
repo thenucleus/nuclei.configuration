@@ -21,20 +21,27 @@ namespace Nuclei.Configuration
         Justification = "Unit tests do not need documentation.")]
     public sealed class ConfigurationKeyTest : EqualityContractVerifierTest
     {
-        private sealed class MessageIdEqualityContractVerifier : EqualityContractVerifier<ConfigurationKey>
+        private sealed class MessageIdEqualityContractVerifier : EqualityContractVerifier<ConfigurationKeyBase>
         {
-            private readonly ConfigurationKey _first
-                = new ConfigurationKey("a", typeof(string));
+            private readonly ConfigurationKeyBase _first
+                = new ConfigurationKey<string>("a");
 
-            private readonly ConfigurationKey _second
-                 = new ConfigurationKey("b", typeof(int));
+            private readonly ConfigurationKeyBase _second
+                 = new ConfigurationKey<int>("b");
 
-            protected override ConfigurationKey Copy(ConfigurationKey original)
+            protected override ConfigurationKeyBase Copy(ConfigurationKeyBase original)
             {
-                return new ConfigurationKey(original.Name, original.TranslateTo);
+                if (original == _first)
+                {
+                    return new ConfigurationKey<string>(original.Name);
+                }
+                else
+                {
+                    return new ConfigurationKey<int>(original.Name);
+                }
             }
 
-            protected override ConfigurationKey FirstInstance
+            protected override ConfigurationKeyBase FirstInstance
             {
                 get
                 {
@@ -42,7 +49,7 @@ namespace Nuclei.Configuration
                 }
             }
 
-            protected override ConfigurationKey SecondInstance
+            protected override ConfigurationKeyBase SecondInstance
             {
                 get
                 {
@@ -61,16 +68,16 @@ namespace Nuclei.Configuration
 
         private sealed class MessageIdHashCodeContractVerfier : HashCodeContractVerifier
         {
-            private readonly IEnumerable<ConfigurationKey> _distinctInstances
-                = new List<ConfigurationKey>
+            private readonly IEnumerable<ConfigurationKeyBase> _distinctInstances
+                = new List<ConfigurationKeyBase>
                      {
-                        new ConfigurationKey("a", typeof(string)),
-                        new ConfigurationKey("b", typeof(int)),
-                        new ConfigurationKey("c", typeof(double)),
-                        new ConfigurationKey("d", typeof(float)),
-                        new ConfigurationKey("e", typeof(string)),
-                        new ConfigurationKey("f", typeof(Version)),
-                        new ConfigurationKey("g", typeof(object)),
+                        new ConfigurationKey<string>("a"),
+                        new ConfigurationKey<int>("b"),
+                        new ConfigurationKey<double>("c"),
+                        new ConfigurationKey<float>("d"),
+                        new ConfigurationKey<string>("e"),
+                        new ConfigurationKey<Version>("f"),
+                        new ConfigurationKey<object>("g"),
                      };
 
             protected override IEnumerable<int> GetHashCodes()
@@ -103,11 +110,10 @@ namespace Nuclei.Configuration
         public void Create()
         {
             var name = "a";
-            var type = typeof(string);
-            var key = new ConfigurationKey(name, type);
+            var key = new ConfigurationKey<string>(name);
 
             Assert.AreEqual(name, key.Name);
-            Assert.AreEqual(type, key.TranslateTo);
+            Assert.AreEqual(typeof(string), key.TranslateTo);
         }
     }
 }
