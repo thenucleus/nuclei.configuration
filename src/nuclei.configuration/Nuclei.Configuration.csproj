@@ -61,6 +61,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationBase.cs" />
     <Compile Include="ConfigurationHelpers.cs" />
     <Compile Include="ConfigurationKey.cs" />
     <Compile Include="ConfigurationKeyBase.cs" />

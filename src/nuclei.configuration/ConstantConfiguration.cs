@@ -7,14 +7,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
+using System.Collections.ObjectModel;
 
 namespace Nuclei.Configuration
 {
     /// <summary>
     /// Defines a <see cref="IConfiguration"/> object stores a set of pre-configured constant values.
     /// </summary>
-    public sealed class ConstantConfiguration : IConfiguration
+    public sealed class ConstantConfiguration : ConfigurationBase
     {
         private readonly Dictionary<ConfigurationKeyBase, object> _values
             = new Dictionary<ConfigurationKeyBase, object>();
@@ -40,51 +40,12 @@ namespace Nuclei.Configuration
         }
 
         /// <summary>
-        /// Returns a value indicating if there is a value for the given key or not.
+        /// Returns a collection containing a mapping of all the known keys to the connected values.
         /// </summary>
-        /// <param name="key">The configuration key.</param>
-        /// <returns>
-        /// <see langword="true" /> if there is a value for the given key; otherwise, <see langword="false"/>.
-        /// </returns>
-        [SuppressMessage(
-            "Microsoft.StyleCop.CSharp.DocumentationRules",
-            "SA1628:DocumentationTextMustBeginWithACapitalLetter",
-            Justification = "Documentation can start with a language keyword")]
-        public bool HasValueFor(ConfigurationKeyBase key)
+        /// <returns>The collection containing the mapping of all the known keys to the connected values.</returns>
+        protected override IReadOnlyDictionary<ConfigurationKeyBase, object> KeyToValueMap()
         {
-            return (key != null) && _values.ContainsKey(key);
-        }
-
-        /// <summary>
-        /// Returns the value for the given configuration key.
-        /// </summary>
-        /// <typeparam name="T">The type of the return value.</typeparam>
-        /// <param name="key">The configuration key.</param>
-        /// <returns>
-        /// The desired value.
-        /// </returns>
-        public T Value<T>(ConfigurationKeyBase key)
-        {
-            if (HasValueFor(key))
-            {
-                var obj = _values[key];
-                return (T)obj;
-            }
-
-            return default(T);
-        }
-
-        /// <summary>
-        /// Returns the value for the given configuration key.
-        /// </summary>
-        /// <typeparam name="T">The type of the return value.</typeparam>
-        /// <param name="key">The configuration key.</param>
-        /// <returns>
-        /// The desired value.
-        /// </returns>
-        public T Value<T>(ConfigurationKey<T> key)
-        {
-            return Value<T>((ConfigurationKeyBase)key);
+            return new ReadOnlyDictionary<ConfigurationKeyBase, object>(_values);
         }
     }
 }
