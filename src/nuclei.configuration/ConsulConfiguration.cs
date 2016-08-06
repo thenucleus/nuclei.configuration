@@ -17,7 +17,7 @@ using Consul;
 namespace Nuclei.Configuration
 {
     /// <summary>
-    /// Defines a <see cref="IConfiguration"/> object that gets configuration values from a <see href="http://consul.io"/> key-value store.
+    /// Defines a <see cref="IConfiguration"/> object that gets configuration values from a <a href="http://consul.io">consul</a> key-value store.
     /// </summary>
     public sealed class ConsulConfiguration : ConfigurationBase
     {
