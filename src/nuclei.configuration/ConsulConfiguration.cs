@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
+using System.Text;
+using System.Web.Script.Serialization;
 using Consul;
 
 namespace Nuclei.Configuration
@@ -19,20 +21,31 @@ namespace Nuclei.Configuration
     /// </summary>
     public sealed class ConsulConfiguration : ConfigurationBase
     {
-        private static readonly IDictionary<Type, Func<byte[], object>> _typeToConverterMap
-            = new Dictionary<Type, Func<byte[], object>>
+        private static readonly JavaScriptSerializer _serializer = new JavaScriptSerializer();
+
+        private static readonly IDictionary<Type, Func<string, object>> _typeToConverterMap
+            = new Dictionary<Type, Func<string, object>>
             {
-                [typeof(bool)] = b => BitConverter.ToBoolean(b, 0),
-                [typeof(string)] = b => BitConverter.ToString(b, 0),
-                [typeof(char)] = b => BitConverter.ToString(b, 0),
-                [typeof(float)] = b => BitConverter.ToSingle(b, 0),
-                [typeof(double)] = b => BitConverter.ToString(b, 0),
-                [typeof(short)] = b => BitConverter.ToInt16(b, 0),
-                [typeof(int)] = b => BitConverter.ToInt32(b, 0),
-                [typeof(long)] = b => BitConverter.ToInt64(b, 0),
-                [typeof(ushort)] = b => BitConverter.ToUInt16(b, 0),
-                [typeof(uint)] = b => BitConverter.ToUInt32(b, 0),
-                [typeof(ulong)] = b => BitConverter.ToUInt64(b, 0),
+                [typeof(bool)] = s => _serializer.Deserialize<bool>(s),
+                [typeof(char)] = s => _serializer.Deserialize<char>(s),
+                [typeof(float)] = s => _serializer.Deserialize<float>(s),
+                [typeof(double)] = s => _serializer.Deserialize<double>(s),
+                [typeof(short)] = s => _serializer.Deserialize<short>(s),
+                [typeof(int)] = s => _serializer.Deserialize<int>(s),
+                [typeof(long)] = s => _serializer.Deserialize<long>(s),
+                [typeof(ushort)] = s => _serializer.Deserialize<ushort>(s),
+                [typeof(uint)] = s => _serializer.Deserialize<uint>(s),
+                [typeof(ulong)] = s => _serializer.Deserialize<ulong>(s),
+                [typeof(string)] =
+                    s =>
+                    {
+                        if (s.StartsWith("\"", StringComparison.Ordinal) && s.EndsWith("\"", StringComparison.Ordinal))
+                        {
+                            return _serializer.Deserialize<string>(s);
+                        }
+
+                        return s;
+                    },
             };
 
         private readonly Dictionary<ConfigurationKeyBase, object> _values
@@ -149,12 +162,34 @@ namespace Nuclei.Configuration
                             {
                                 if (_typeToConverterMap.ContainsKey(key.TranslateTo))
                                 {
-                                    object value = _typeToConverterMap[key.TranslateTo](pair.Value);
-                                    _values.Add(key, value);
+                                    try
+                                    {
+                                        var jsonString = Encoding.UTF8.GetString(pair.Value);
+
+                                        object value = _typeToConverterMap[key.TranslateTo](jsonString);
+                                        _values.Add(key, value);
+                                    }
+                                    catch (DecoderFallbackException)
+                                    {
+                                        // Ignore it
+                                    }
+                                    catch (FormatException)
+                                    {
+                                        // Ignore it
+                                    }
+                                    catch (InvalidCastException)
+                                    {
+                                        // Ignore it
+                                    }
+                                    catch (InvalidOperationException)
+                                    {
+                                        // Ignore it
+                                    }
                                 }
                             }
                         }
-                    });
+                    })
+                .Wait();
             }
         }
 
