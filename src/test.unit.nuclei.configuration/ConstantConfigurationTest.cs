@@ -72,7 +72,7 @@ namespace Nuclei.Configuration
         public void ValueWithNullKey()
         {
             var configuration = new ConstantConfiguration(new Dictionary<ConfigurationKeyBase, object>());
-            Assert.AreEqual(default(int), configuration.Value<int>(null));
+            Assert.Throws<ArgumentNullException>(() => configuration.Value<int>(null));
         }
 
         [Test]
@@ -80,7 +80,7 @@ namespace Nuclei.Configuration
         {
             var key = new ConfigurationKey<int>("b");
             var configuration = new ConstantConfiguration(new Dictionary<ConfigurationKeyBase, object>());
-            Assert.AreEqual(default(int), configuration.Value(key));
+            Assert.Throws<ArgumentException>(() => configuration.Value(key));
         }
     }
 }
