@@ -65,8 +65,8 @@ namespace Nuclei.Configuration
             "Microsoft.Security",
             "CA2104:DoNotDeclareReadOnlyMutableReferenceTypes",
             Justification = "ConfigurationKey objects are immutable.")]
-        public static readonly ConfigurationKey<long> ConsulWaitTimeInMilliSeconds
-            = new ConfigurationKey<long>("ConsulWaitTimeInMilliSeconds");
+        public static readonly ConfigurationKey<long> ConsulWaitTimeInMilliseconds
+            = new ConfigurationKey<long>("ConsulWaitTimeInMilliseconds");
 
         /// <summary>
         /// Returns a collection containing all the configuration keys for the application.
@@ -80,7 +80,7 @@ namespace Nuclei.Configuration
                     ConsulConfigurationPrefix,
                     ConsulDatacenter,
                     ConsulToken,
-                    ConsulWaitTimeInMilliSeconds,
+                    ConsulWaitTimeInMilliseconds,
                 };
         }
     }

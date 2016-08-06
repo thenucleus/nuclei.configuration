@@ -93,7 +93,7 @@ namespace Nuclei.Configuration
 
             if (configuration == null)
             {
-                throw new ArgumentNullException("configurations");
+                throw new ArgumentNullException("configuration");
             }
 
             var consulConfig = new ConsulClientConfiguration();
@@ -112,9 +112,9 @@ namespace Nuclei.Configuration
                 consulConfig.Token = configuration.Value(ConfigurationKeys.ConsulToken);
             }
 
-            if (configuration.HasValueFor(ConfigurationKeys.ConsulWaitTimeInMilliSeconds))
+            if (configuration.HasValueFor(ConfigurationKeys.ConsulWaitTimeInMilliseconds))
             {
-                consulConfig.WaitTime = TimeSpan.FromMilliseconds(configuration.Value(ConfigurationKeys.ConsulWaitTimeInMilliSeconds));
+                consulConfig.WaitTime = TimeSpan.FromMilliseconds(configuration.Value(ConfigurationKeys.ConsulWaitTimeInMilliseconds));
             }
 
             var configPrefix = configuration.HasValueFor(ConfigurationKeys.ConsulConfigurationPrefix)
