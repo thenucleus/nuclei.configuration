@@ -34,6 +34,16 @@ The `ConstantConfiguration` class allows the user to provide a set of configurat
 [!code-csharp[ConstantConfiguration.Value](..\..\Nuclei.Configuration.Samples\ConstantConfigurationSample.cs?range=34-42)]
 
 
+# ConsulConfiguration
+
+The `ConsulConfiguration` class allows the user to gather configuration values from a [consul](https://consul.io) instance. Configuration values will be obtained from
+the consul key-value store.
+
+[!code-csharp[ConsulConfiguration.HasValueFor](..\..\Nuclei.Configuration.Samples\ConsulConfigurationSample.cs?range=20-33)]
+
+[!code-csharp[ConsulConfiguration.Value](..\..\Nuclei.Configuration.Samples\ConsulConfigurationSample.cs?range=43-57)]
+
+
 ## HierarchicalConfiguration
 
 The `HierarchicalConfiguration` class does not store any configuration values itself. Instead it stores a collection of `IConfiguration` instances and retrieves the
