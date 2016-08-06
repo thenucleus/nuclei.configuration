@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{525FF8D6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "codeanalysis", "codeanalysis", "{4058FF97-0E99-419F-9E44-C89432CE5199}"
 	ProjectSection(SolutionItems) = preProject
+		..\CustomDictionary.xml = ..\CustomDictionary.xml
 		default.ruleset = default.ruleset
 		stylecop.json = stylecop.json
 		test.ruleset = test.ruleset
