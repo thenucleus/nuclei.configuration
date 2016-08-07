@@ -397,21 +397,23 @@
         The solution path allows build templates, e.g. '$(DirSrc)\${CompanyName}\${ProductName}\MySolution.sln'
     -->
     <ItemGroup>
-        <!--
         <SolutionsToBuild Include="$(DirSrc)\*.sln"
                           Condition=" '$(TestConfiguration)' != '$(ProductionConfiguration)' " >
             <Configuration>$(TestConfiguration)</Configuration>
             <Platform>$(Platform)</Platform>
             <Targets>Rebuild</Targets>
-            <Properties></Properties>
+            <Properties>
+                ShouldPerformCodeAnalysis=false;
+            </Properties>
         </SolutionsToBuild>
         <SolutionsToBuild Include="$(DirSrc)\*.sln">
             <Configuration>$(ProductionConfiguration)</Configuration>
             <Platform>$(Platform)</Platform>
             <Targets>Rebuild</Targets>
-            <Properties></Properties>
+            <Properties>
+                ShouldPerformCodeAnalysis=false;
+            </Properties>
         </SolutionsToBuild>
-        -->
     </ItemGroup>
 
     <PropertyGroup>

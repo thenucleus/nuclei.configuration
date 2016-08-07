@@ -7,8 +7,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Configuration;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
@@ -19,7 +19,7 @@ namespace Nuclei.Configuration
     /// <summary>
     /// Defines a <see cref="IConfiguration"/> object that gets its value from the application configuration file.
     /// </summary>
-    public sealed class ApplicationConfiguration : IConfiguration
+    public sealed class ApplicationConfiguration : ConfigurationBase
     {
         private readonly Dictionary<ConfigurationKeyBase, object> _values
             = new Dictionary<ConfigurationKeyBase, object>();
@@ -94,64 +94,12 @@ namespace Nuclei.Configuration
         }
 
         /// <summary>
-        /// Returns a value indicating if there is a value for the given key or not.
+        /// Returns a collection containing a mapping of all the known keys to the connected values.
         /// </summary>
-        /// <param name="key">The configuration key.</param>
-        /// <returns>
-        /// <see langword="true" /> if there is a value for the given key; otherwise, <see langword="false"/>.
-        /// </returns>
-        [SuppressMessage(
-            "Microsoft.StyleCop.CSharp.DocumentationRules",
-            "SA1628:DocumentationTextMustBeginWithACapitalLetter",
-            Justification = "Documentation can start with a language keyword")]
-        public bool HasValueFor(ConfigurationKeyBase key)
+        /// <returns>The collection containing the mapping of all the known keys to the connected values.</returns>
+        protected override IReadOnlyDictionary<ConfigurationKeyBase, object> KeyToValueMap()
         {
-            return (key != null) && _values.ContainsKey(key);
-        }
-
-        /// <summary>
-        /// Returns the value for the given configuration key.
-        /// </summary>
-        /// <typeparam name="T">The type of the return value.</typeparam>
-        /// <param name="key">The configuration key.</param>
-        /// <returns>
-        /// The desired value.
-        /// </returns>
-        /// <exception cref="ArgumentNullException">
-        ///     Thrown if <paramref name="key"/> is <see langword="null" />.
-        /// </exception>
-        /// <exception cref="ArgumentException">
-        ///     Thrown if <paramref name="key"/> does not match any of the registered configuration keys.
-        /// </exception>
-        public T Value<T>(ConfigurationKeyBase key)
-        {
-            if (key == null)
-            {
-                throw new ArgumentNullException("key");
-            }
-
-            if (!_values.ContainsKey(key))
-            {
-                throw new ArgumentException(
-                    Resources.Exceptions_Messages_UnknownConfigurationKey,
-                    "key");
-            }
-
-            var obj = _values[key];
-            return (T)obj;
-        }
-
-        /// <summary>
-        /// Returns the value for the given configuration key.
-        /// </summary>
-        /// <typeparam name="T">The type of the return value.</typeparam>
-        /// <param name="key">The configuration key.</param>
-        /// <returns>
-        /// The desired value.
-        /// </returns>
-        public T Value<T>(ConfigurationKey<T> key)
-        {
-            return Value<T>((ConfigurationKeyBase)key);
+            return new ReadOnlyDictionary<ConfigurationKeyBase, object>(_values);
         }
     }
 }
