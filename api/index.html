@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Nuclei.Configuration </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Nuclei.Configuration ">
+    <meta name="generator" content="docfx 2.2.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+              <a href="https://github.com/thenucleus/nuclei.configuration/blob/release/0.9.0/doc/Nuclei.Configuration.Documentation/api/index.md/#L1" class="btn btn-primary pull-right mobile-hide">Improve this Doc</a>
+              <h1 id="nuclei-configuration">Nuclei.Configuration</h1>
+              
+<h2 id="configuration-keys">Configuration keys</h2>
+<p>To define a configuration key create an instance of the <code>ConfigurationKey</code> class with the type of the value that should be retrieved and the &#39;path&#39; to the value in the
+configuration store.</p>
+<pre><code class="lang-csharp" name="ConfigurationKey">var key = new ConfigurationKey&lt;int&gt;(&quot;Key1&quot;);
+</code></pre><h2 id="applicationconfiguration">ApplicationConfiguration</h2>
+<p>The <code>ApplicationConfiguration</code> class gets configuration data from the application configuration file. To store information in the configuration file create
+a configuration section that will hold the configuration values and insert the desired values. Each value is marked by a key and stored so that the
+.NET xml serializer can read the values.</p>
+<pre><code class="lang-xml" name="Configuration sample">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+&lt;configuration&gt;
+    &lt;configSections&gt;
+        &lt;section name=&quot;samples&quot; type=&quot;Nuclei.Configuration.ConfigurationSectionToXmlTranslator, Nuclei.Configuration&quot; /&gt;
+    &lt;/configSections&gt;
+    &lt;samples&gt;
+        &lt;Key1&gt;
+            &lt;int&gt;10&lt;/int&gt;
+        &lt;/Key1&gt;
+        &lt;Key2&gt;
+            &lt;ArrayOfString&gt;
+                &lt;string&gt;more text&lt;/string&gt;
+                &lt;string&gt;and even more text&lt;/string&gt;
+            &lt;/ArrayOfString&gt;
+        &lt;/Key2&gt;
+        &lt;Key3&gt;
+            &lt;double&gt;1.23456&lt;/double&gt;
+        &lt;/Key3&gt;
+    &lt;/samples&gt;
+&lt;/configuration&gt;
+</code></pre><p>Create the <code>ApplicationConfiguration</code> instance and provide the name of the configuration section.</p>
+<pre><code class="lang-csharp" name="ApplicationConfiguration.HasValueFor">var key = new ConfigurationKey&lt;int&gt;(&quot;Key1&quot;);
+
+var configuration = new ApplicationConfiguration(new[] { key }, &quot;samples&quot;);
+var hasValue = configuration.HasValueFor(key);
+</code></pre><pre><code class="lang-csharp" name="ApplicationConfiguration.Value">var key = new ConfigurationKey&lt;int&gt;(&quot;Key1&quot;);
+var configuration = new ApplicationConfiguration(new[] { key }, &quot;samples&quot;);
+
+var value = configuration.Value(key);
+</code></pre><h1 id="constantconfiguration">ConstantConfiguration</h1>
+<p>The <code>ConstantConfiguration</code> class allows the user to provide a set of configuration keys and the values that should be stored for these keys. In combination with the
+<code>HierarchicalConfiguration</code> the <code>ConstantConfiguration</code> allows the user to provide a series of constant values as fall back for each of the known configuration keys.</p>
+<pre><code class="lang-csharp" name="ConstantConfiguration.HasValueFor">var key = new ConfigurationKey&lt;int&gt;(&quot;my_property&quot;);
+
+var configuration = new ConstantConfiguration(
+     new Dictionary&lt;ConfigurationKeyBase, object&gt;
+         {
+             [key] = 10
+         });
+var hasValue = configuration.HasValueFor(key);
+</code></pre><pre><code class="lang-csharp" name="ConstantConfiguration.Value">var constantValue = 10;
+var key = new ConfigurationKey&lt;int&gt;(&quot;my_property&quot;);
+
+var configuration = new ConstantConfiguration(
+     new Dictionary&lt;ConfigurationKeyBase, object&gt;
+     {
+         [key] = constantValue
+     });
+var value = configuration.Value(key);
+</code></pre><h1 id="consulconfiguration">ConsulConfiguration</h1>
+<p>The <code>ConsulConfiguration</code> class allows the user to gather configuration values from a <a href="https://consul.io">consul</a> instance. Configuration values will be obtained from
+the consul key-value store.</p>
+<pre><code class="lang-csharp" name="ConsulConfiguration.HasValueFor">var key = new ConfigurationKey&lt;int&gt;(&quot;Key1&quot;);
+
+var connectionConfiguration = new ConstantConfiguration(
+    new Dictionary&lt;ConfigurationKeyBase, object&gt;
+        {
+            [ConfigurationKeys.ConsulAddress] = &quot;http://localhost:8500&quot;,
+            [ConfigurationKeys.ConsulDatacenter] = &quot;dc1&quot;,
+            [ConfigurationKeys.ConsulConfigurationPrefix] = &quot;all-my-keys-start-with-this-value&quot;,
+        });
+
+var configuration = new ConsulConfiguration(
+    new[] { key },
+    connectionConfiguration);
+var hasValue = configuration.HasValueFor(key);
+</code></pre><pre><code class="lang-csharp" name="ConsulConfiguration.Value">var key = new ConfigurationKey&lt;int&gt;(&quot;Key1&quot;);
+
+var connectionConfiguration = new ConstantConfiguration(
+new Dictionary&lt;ConfigurationKeyBase, object&gt;
+    {
+        [ConfigurationKeys.ConsulAddress] = &quot;http://localhost:8500&quot;,
+        [ConfigurationKeys.ConsulDatacenter] = &quot;dc1&quot;,
+        [ConfigurationKeys.ConsulConfigurationPrefix] = &quot;all-my-keys-start-with-this-value&quot;,
+    });
+
+var configuration = new ConsulConfiguration(
+    new[] { key },
+    connectionConfiguration);
+
+var value = configuration.Value(key);
+</code></pre><h2 id="hierarchicalconfiguration">HierarchicalConfiguration</h2>
+<p>The <code>HierarchicalConfiguration</code> class does not store any configuration values itself. Instead it stores a collection of <code>IConfiguration</code> instances and retrieves the
+configuration data from the items in that collection. If multiple configurations have a configuration for a given configurations key then the first configuration
+to provide the configuration value is used.</p>
+<pre><code class="lang-csharp" name="HierarchicalConfiguration.HasValueFor">var key = new ConfigurationKey&lt;int&gt;(&quot;Key1&quot;);
+
+var configuration = new HierarchicalConfiguration(
+    new IConfiguration[]
+    {
+        new ApplicationConfiguration(new[] { key }, &quot;samples&quot;)
+    });
+var hasValue = configuration.HasValueFor(key);
+</code></pre><pre><code class="lang-csharp" name="HierarchicalConfiguration.Value">var key = new ConfigurationKey&lt;int&gt;(&quot;Key1&quot;);
+var configuration = new HierarchicalConfiguration(
+    new IConfiguration[]
+    {
+        new ApplicationConfiguration(new[] { key }, &quot;samples&quot;)
+    });
+
+var value = configuration.Value(key);
+</code></pre><h2 id="nullconfiguration">NullConfiguration</h2>
+<p>The <code>NullConfiguration</code> class does not store any configuration values. Return values are the default value for the type of data that is supposed to be stored.</p>
+<pre><code class="lang-csharp" name="NullConfiguration.HasValueFor">var key = new ConfigurationKey&lt;int&gt;(&quot;my_property&quot;);
+
+var configuration = new NullConfiguration();
+var hasValue = configuration.HasValueFor(key);
+</code></pre><pre><code class="lang-csharp" name="NullConfiguration.Value">var key = new ConfigurationKey&lt;int&gt;(&quot;my_property&quot;);
+
+var configuration = new NullConfiguration();
+var value = configuration.Value(key);
+</code></pre>
+            </article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+            <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+            </nav>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) - TheNucleus 2013 - 2016. All rights reserved.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>

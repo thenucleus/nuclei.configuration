@@ -1,0 +1,285 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Nuclei.Configuration
+  name: Nuclei.Configuration
+  href: api/Nuclei.Configuration.html#Nuclei_Configuration
+  commentId: N:Nuclei.Configuration
+  fullName: Nuclei.Configuration
+- uid: Nuclei.Configuration.ApplicationConfiguration
+  name: ApplicationConfiguration
+  href: api/Nuclei.Configuration.ApplicationConfiguration.html#Nuclei_Configuration_ApplicationConfiguration
+  commentId: T:Nuclei.Configuration.ApplicationConfiguration
+  fullName: Nuclei.Configuration.ApplicationConfiguration
+- uid: Nuclei.Configuration.ApplicationConfiguration.#ctor(System.Collections.Generic.IEnumerable{Nuclei.Configuration.ConfigurationKeyBase},System.String)
+  name: ApplicationConfiguration(IEnumerable<ConfigurationKeyBase>, String)
+  href: api/Nuclei.Configuration.ApplicationConfiguration.html#Nuclei_Configuration_ApplicationConfiguration__ctor_System_Collections_Generic_IEnumerable_Nuclei_Configuration_ConfigurationKeyBase__System_String_
+  commentId: M:Nuclei.Configuration.ApplicationConfiguration.#ctor(System.Collections.Generic.IEnumerable{Nuclei.Configuration.ConfigurationKeyBase},System.String)
+  name.vb: ApplicationConfiguration(IEnumerable(Of ConfigurationKeyBase), String)
+  fullName: Nuclei.Configuration.ApplicationConfiguration.ApplicationConfiguration(System.Collections.Generic.IEnumerable<Nuclei.Configuration.ConfigurationKeyBase>, System.String)
+  fullName.vb: Nuclei.Configuration.ApplicationConfiguration.ApplicationConfiguration(System.Collections.Generic.IEnumerable(Of Nuclei.Configuration.ConfigurationKeyBase), System.String)
+- uid: Nuclei.Configuration.ApplicationConfiguration.KeyToValueMap
+  name: KeyToValueMap()
+  href: api/Nuclei.Configuration.ApplicationConfiguration.html#Nuclei_Configuration_ApplicationConfiguration_KeyToValueMap
+  commentId: M:Nuclei.Configuration.ApplicationConfiguration.KeyToValueMap
+  fullName: Nuclei.Configuration.ApplicationConfiguration.KeyToValueMap()
+- uid: Nuclei.Configuration.ConfigurationBase
+  name: ConfigurationBase
+  href: api/Nuclei.Configuration.ConfigurationBase.html#Nuclei_Configuration_ConfigurationBase
+  commentId: T:Nuclei.Configuration.ConfigurationBase
+  fullName: Nuclei.Configuration.ConfigurationBase
+- uid: Nuclei.Configuration.ConfigurationBase.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+  name: HasValueFor(ConfigurationKeyBase)
+  href: api/Nuclei.Configuration.ConfigurationBase.html#Nuclei_Configuration_ConfigurationBase_HasValueFor_Nuclei_Configuration_ConfigurationKeyBase_
+  commentId: M:Nuclei.Configuration.ConfigurationBase.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+  fullName: Nuclei.Configuration.ConfigurationBase.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+- uid: Nuclei.Configuration.ConfigurationBase.KeyToValueMap
+  name: KeyToValueMap()
+  href: api/Nuclei.Configuration.ConfigurationBase.html#Nuclei_Configuration_ConfigurationBase_KeyToValueMap
+  commentId: M:Nuclei.Configuration.ConfigurationBase.KeyToValueMap
+  fullName: Nuclei.Configuration.ConfigurationBase.KeyToValueMap()
+- uid: Nuclei.Configuration.ConfigurationBase.Value``1(Nuclei.Configuration.ConfigurationKey{``0})
+  name: Value<T>(ConfigurationKey<T>)
+  href: api/Nuclei.Configuration.ConfigurationBase.html#Nuclei_Configuration_ConfigurationBase_Value__1_Nuclei_Configuration_ConfigurationKey___0__
+  commentId: M:Nuclei.Configuration.ConfigurationBase.Value``1(Nuclei.Configuration.ConfigurationKey{``0})
+  name.vb: Value(Of T)(ConfigurationKey(Of T))
+  fullName: Nuclei.Configuration.ConfigurationBase.Value<T>(Nuclei.Configuration.ConfigurationKey<T>)
+  fullName.vb: Nuclei.Configuration.ConfigurationBase.Value(Of T)(Nuclei.Configuration.ConfigurationKey(Of T))
+- uid: Nuclei.Configuration.ConfigurationBase.Value``1(Nuclei.Configuration.ConfigurationKeyBase)
+  name: Value<T>(ConfigurationKeyBase)
+  href: api/Nuclei.Configuration.ConfigurationBase.html#Nuclei_Configuration_ConfigurationBase_Value__1_Nuclei_Configuration_ConfigurationKeyBase_
+  commentId: M:Nuclei.Configuration.ConfigurationBase.Value``1(Nuclei.Configuration.ConfigurationKeyBase)
+  name.vb: Value(Of T)(ConfigurationKeyBase)
+  fullName: Nuclei.Configuration.ConfigurationBase.Value<T>(Nuclei.Configuration.ConfigurationKeyBase)
+  fullName.vb: Nuclei.Configuration.ConfigurationBase.Value(Of T)(Nuclei.Configuration.ConfigurationKeyBase)
+- uid: Nuclei.Configuration.ConfigurationHelpers
+  name: ConfigurationHelpers
+  href: api/Nuclei.Configuration.ConfigurationHelpers.html#Nuclei_Configuration_ConfigurationHelpers
+  commentId: T:Nuclei.Configuration.ConfigurationHelpers
+  fullName: Nuclei.Configuration.ConfigurationHelpers
+- uid: Nuclei.Configuration.ConfigurationHelpers.ShouldBeProfiling
+  name: ShouldBeProfiling()
+  href: api/Nuclei.Configuration.ConfigurationHelpers.html#Nuclei_Configuration_ConfigurationHelpers_ShouldBeProfiling
+  commentId: M:Nuclei.Configuration.ConfigurationHelpers.ShouldBeProfiling
+  fullName: Nuclei.Configuration.ConfigurationHelpers.ShouldBeProfiling()
+- uid: Nuclei.Configuration.ConfigurationKey`1
+  name: ConfigurationKey<T>
+  href: api/Nuclei.Configuration.ConfigurationKey-1.html#Nuclei_Configuration_ConfigurationKey_1
+  commentId: T:Nuclei.Configuration.ConfigurationKey`1
+  name.vb: ConfigurationKey(Of T)
+  fullName: Nuclei.Configuration.ConfigurationKey<T>
+  fullName.vb: Nuclei.Configuration.ConfigurationKey(Of T)
+- uid: Nuclei.Configuration.ConfigurationKey`1.#ctor(System.String)
+  name: ConfigurationKey(String)
+  href: api/Nuclei.Configuration.ConfigurationKey-1.html#Nuclei_Configuration_ConfigurationKey_1__ctor_System_String_
+  commentId: M:Nuclei.Configuration.ConfigurationKey`1.#ctor(System.String)
+  fullName: Nuclei.Configuration.ConfigurationKey<T>.ConfigurationKey(System.String)
+  fullName.vb: Nuclei.Configuration.ConfigurationKey(Of T).ConfigurationKey(System.String)
+- uid: Nuclei.Configuration.ConfigurationKeyBase
+  name: ConfigurationKeyBase
+  href: api/Nuclei.Configuration.ConfigurationKeyBase.html#Nuclei_Configuration_ConfigurationKeyBase
+  commentId: T:Nuclei.Configuration.ConfigurationKeyBase
+  fullName: Nuclei.Configuration.ConfigurationKeyBase
+- uid: Nuclei.Configuration.ConfigurationKeyBase.#ctor(System.String,System.Type)
+  name: ConfigurationKeyBase(String, Type)
+  href: api/Nuclei.Configuration.ConfigurationKeyBase.html#Nuclei_Configuration_ConfigurationKeyBase__ctor_System_String_System_Type_
+  commentId: M:Nuclei.Configuration.ConfigurationKeyBase.#ctor(System.String,System.Type)
+  fullName: Nuclei.Configuration.ConfigurationKeyBase.ConfigurationKeyBase(System.String, System.Type)
+- uid: Nuclei.Configuration.ConfigurationKeyBase.Equals(Nuclei.Configuration.ConfigurationKeyBase)
+  name: Equals(ConfigurationKeyBase)
+  href: api/Nuclei.Configuration.ConfigurationKeyBase.html#Nuclei_Configuration_ConfigurationKeyBase_Equals_Nuclei_Configuration_ConfigurationKeyBase_
+  commentId: M:Nuclei.Configuration.ConfigurationKeyBase.Equals(Nuclei.Configuration.ConfigurationKeyBase)
+  fullName: Nuclei.Configuration.ConfigurationKeyBase.Equals(Nuclei.Configuration.ConfigurationKeyBase)
+- uid: Nuclei.Configuration.ConfigurationKeyBase.Equals(System.Object)
+  name: Equals(Object)
+  href: api/Nuclei.Configuration.ConfigurationKeyBase.html#Nuclei_Configuration_ConfigurationKeyBase_Equals_System_Object_
+  commentId: M:Nuclei.Configuration.ConfigurationKeyBase.Equals(System.Object)
+  fullName: Nuclei.Configuration.ConfigurationKeyBase.Equals(System.Object)
+- uid: Nuclei.Configuration.ConfigurationKeyBase.GetHashCode
+  name: GetHashCode()
+  href: api/Nuclei.Configuration.ConfigurationKeyBase.html#Nuclei_Configuration_ConfigurationKeyBase_GetHashCode
+  commentId: M:Nuclei.Configuration.ConfigurationKeyBase.GetHashCode
+  fullName: Nuclei.Configuration.ConfigurationKeyBase.GetHashCode()
+- uid: Nuclei.Configuration.ConfigurationKeyBase.Name
+  name: Name
+  href: api/Nuclei.Configuration.ConfigurationKeyBase.html#Nuclei_Configuration_ConfigurationKeyBase_Name
+  commentId: P:Nuclei.Configuration.ConfigurationKeyBase.Name
+  fullName: Nuclei.Configuration.ConfigurationKeyBase.Name
+- uid: Nuclei.Configuration.ConfigurationKeyBase.op_Equality(Nuclei.Configuration.ConfigurationKeyBase,Nuclei.Configuration.ConfigurationKeyBase)
+  name: Equality(ConfigurationKeyBase, ConfigurationKeyBase)
+  href: api/Nuclei.Configuration.ConfigurationKeyBase.html#Nuclei_Configuration_ConfigurationKeyBase_op_Equality_Nuclei_Configuration_ConfigurationKeyBase_Nuclei_Configuration_ConfigurationKeyBase_
+  commentId: M:Nuclei.Configuration.ConfigurationKeyBase.op_Equality(Nuclei.Configuration.ConfigurationKeyBase,Nuclei.Configuration.ConfigurationKeyBase)
+  fullName: Nuclei.Configuration.ConfigurationKeyBase.Equality(Nuclei.Configuration.ConfigurationKeyBase, Nuclei.Configuration.ConfigurationKeyBase)
+- uid: Nuclei.Configuration.ConfigurationKeyBase.op_Inequality(Nuclei.Configuration.ConfigurationKeyBase,Nuclei.Configuration.ConfigurationKeyBase)
+  name: Inequality(ConfigurationKeyBase, ConfigurationKeyBase)
+  href: api/Nuclei.Configuration.ConfigurationKeyBase.html#Nuclei_Configuration_ConfigurationKeyBase_op_Inequality_Nuclei_Configuration_ConfigurationKeyBase_Nuclei_Configuration_ConfigurationKeyBase_
+  commentId: M:Nuclei.Configuration.ConfigurationKeyBase.op_Inequality(Nuclei.Configuration.ConfigurationKeyBase,Nuclei.Configuration.ConfigurationKeyBase)
+  fullName: Nuclei.Configuration.ConfigurationKeyBase.Inequality(Nuclei.Configuration.ConfigurationKeyBase, Nuclei.Configuration.ConfigurationKeyBase)
+- uid: Nuclei.Configuration.ConfigurationKeyBase.ToString
+  name: ToString()
+  href: api/Nuclei.Configuration.ConfigurationKeyBase.html#Nuclei_Configuration_ConfigurationKeyBase_ToString
+  commentId: M:Nuclei.Configuration.ConfigurationKeyBase.ToString
+  fullName: Nuclei.Configuration.ConfigurationKeyBase.ToString()
+- uid: Nuclei.Configuration.ConfigurationKeyBase.TranslateTo
+  name: TranslateTo
+  href: api/Nuclei.Configuration.ConfigurationKeyBase.html#Nuclei_Configuration_ConfigurationKeyBase_TranslateTo
+  commentId: P:Nuclei.Configuration.ConfigurationKeyBase.TranslateTo
+  fullName: Nuclei.Configuration.ConfigurationKeyBase.TranslateTo
+- uid: Nuclei.Configuration.ConfigurationKeys
+  name: ConfigurationKeys
+  href: api/Nuclei.Configuration.ConfigurationKeys.html#Nuclei_Configuration_ConfigurationKeys
+  commentId: T:Nuclei.Configuration.ConfigurationKeys
+  fullName: Nuclei.Configuration.ConfigurationKeys
+- uid: Nuclei.Configuration.ConfigurationKeys.ConsulAddress
+  name: ConsulAddress
+  href: api/Nuclei.Configuration.ConfigurationKeys.html#Nuclei_Configuration_ConfigurationKeys_ConsulAddress
+  commentId: F:Nuclei.Configuration.ConfigurationKeys.ConsulAddress
+  fullName: Nuclei.Configuration.ConfigurationKeys.ConsulAddress
+- uid: Nuclei.Configuration.ConfigurationKeys.ConsulConfigurationPrefix
+  name: ConsulConfigurationPrefix
+  href: api/Nuclei.Configuration.ConfigurationKeys.html#Nuclei_Configuration_ConfigurationKeys_ConsulConfigurationPrefix
+  commentId: F:Nuclei.Configuration.ConfigurationKeys.ConsulConfigurationPrefix
+  fullName: Nuclei.Configuration.ConfigurationKeys.ConsulConfigurationPrefix
+- uid: Nuclei.Configuration.ConfigurationKeys.ConsulDatacenter
+  name: ConsulDatacenter
+  href: api/Nuclei.Configuration.ConfigurationKeys.html#Nuclei_Configuration_ConfigurationKeys_ConsulDatacenter
+  commentId: F:Nuclei.Configuration.ConfigurationKeys.ConsulDatacenter
+  fullName: Nuclei.Configuration.ConfigurationKeys.ConsulDatacenter
+- uid: Nuclei.Configuration.ConfigurationKeys.ConsulToken
+  name: ConsulToken
+  href: api/Nuclei.Configuration.ConfigurationKeys.html#Nuclei_Configuration_ConfigurationKeys_ConsulToken
+  commentId: F:Nuclei.Configuration.ConfigurationKeys.ConsulToken
+  fullName: Nuclei.Configuration.ConfigurationKeys.ConsulToken
+- uid: Nuclei.Configuration.ConfigurationKeys.ConsulWaitTimeInMilliseconds
+  name: ConsulWaitTimeInMilliseconds
+  href: api/Nuclei.Configuration.ConfigurationKeys.html#Nuclei_Configuration_ConfigurationKeys_ConsulWaitTimeInMilliseconds
+  commentId: F:Nuclei.Configuration.ConfigurationKeys.ConsulWaitTimeInMilliseconds
+  fullName: Nuclei.Configuration.ConfigurationKeys.ConsulWaitTimeInMilliseconds
+- uid: Nuclei.Configuration.ConfigurationKeys.ToCollection
+  name: ToCollection()
+  href: api/Nuclei.Configuration.ConfigurationKeys.html#Nuclei_Configuration_ConfigurationKeys_ToCollection
+  commentId: M:Nuclei.Configuration.ConfigurationKeys.ToCollection
+  fullName: Nuclei.Configuration.ConfigurationKeys.ToCollection()
+- uid: Nuclei.Configuration.ConfigurationSectionToXmlTranslator
+  name: ConfigurationSectionToXmlTranslator
+  href: api/Nuclei.Configuration.ConfigurationSectionToXmlTranslator.html#Nuclei_Configuration_ConfigurationSectionToXmlTranslator
+  commentId: T:Nuclei.Configuration.ConfigurationSectionToXmlTranslator
+  fullName: Nuclei.Configuration.ConfigurationSectionToXmlTranslator
+- uid: Nuclei.Configuration.ConfigurationSectionToXmlTranslator.Create(System.Object,System.Object,System.Xml.XmlNode)
+  name: Create(Object, Object, XmlNode)
+  href: api/Nuclei.Configuration.ConfigurationSectionToXmlTranslator.html#Nuclei_Configuration_ConfigurationSectionToXmlTranslator_Create_System_Object_System_Object_System_Xml_XmlNode_
+  commentId: M:Nuclei.Configuration.ConfigurationSectionToXmlTranslator.Create(System.Object,System.Object,System.Xml.XmlNode)
+  fullName: Nuclei.Configuration.ConfigurationSectionToXmlTranslator.Create(System.Object, System.Object, System.Xml.XmlNode)
+- uid: Nuclei.Configuration.ConstantConfiguration
+  name: ConstantConfiguration
+  href: api/Nuclei.Configuration.ConstantConfiguration.html#Nuclei_Configuration_ConstantConfiguration
+  commentId: T:Nuclei.Configuration.ConstantConfiguration
+  fullName: Nuclei.Configuration.ConstantConfiguration
+- uid: Nuclei.Configuration.ConstantConfiguration.#ctor(System.Collections.Generic.IDictionary{Nuclei.Configuration.ConfigurationKeyBase,System.Object})
+  name: ConstantConfiguration(IDictionary<ConfigurationKeyBase, Object>)
+  href: api/Nuclei.Configuration.ConstantConfiguration.html#Nuclei_Configuration_ConstantConfiguration__ctor_System_Collections_Generic_IDictionary_Nuclei_Configuration_ConfigurationKeyBase_System_Object__
+  commentId: M:Nuclei.Configuration.ConstantConfiguration.#ctor(System.Collections.Generic.IDictionary{Nuclei.Configuration.ConfigurationKeyBase,System.Object})
+  name.vb: ConstantConfiguration(IDictionary(Of ConfigurationKeyBase, Object))
+  fullName: Nuclei.Configuration.ConstantConfiguration.ConstantConfiguration(System.Collections.Generic.IDictionary<Nuclei.Configuration.ConfigurationKeyBase, System.Object>)
+  fullName.vb: Nuclei.Configuration.ConstantConfiguration.ConstantConfiguration(System.Collections.Generic.IDictionary(Of Nuclei.Configuration.ConfigurationKeyBase, System.Object))
+- uid: Nuclei.Configuration.ConstantConfiguration.KeyToValueMap
+  name: KeyToValueMap()
+  href: api/Nuclei.Configuration.ConstantConfiguration.html#Nuclei_Configuration_ConstantConfiguration_KeyToValueMap
+  commentId: M:Nuclei.Configuration.ConstantConfiguration.KeyToValueMap
+  fullName: Nuclei.Configuration.ConstantConfiguration.KeyToValueMap()
+- uid: Nuclei.Configuration.ConsulConfiguration
+  name: ConsulConfiguration
+  href: api/Nuclei.Configuration.ConsulConfiguration.html#Nuclei_Configuration_ConsulConfiguration
+  commentId: T:Nuclei.Configuration.ConsulConfiguration
+  fullName: Nuclei.Configuration.ConsulConfiguration
+- uid: Nuclei.Configuration.ConsulConfiguration.#ctor(System.Collections.Generic.IEnumerable{Nuclei.Configuration.ConfigurationKeyBase},Nuclei.Configuration.IConfiguration)
+  name: ConsulConfiguration(IEnumerable<ConfigurationKeyBase>, IConfiguration)
+  href: api/Nuclei.Configuration.ConsulConfiguration.html#Nuclei_Configuration_ConsulConfiguration__ctor_System_Collections_Generic_IEnumerable_Nuclei_Configuration_ConfigurationKeyBase__Nuclei_Configuration_IConfiguration_
+  commentId: M:Nuclei.Configuration.ConsulConfiguration.#ctor(System.Collections.Generic.IEnumerable{Nuclei.Configuration.ConfigurationKeyBase},Nuclei.Configuration.IConfiguration)
+  name.vb: ConsulConfiguration(IEnumerable(Of ConfigurationKeyBase), IConfiguration)
+  fullName: Nuclei.Configuration.ConsulConfiguration.ConsulConfiguration(System.Collections.Generic.IEnumerable<Nuclei.Configuration.ConfigurationKeyBase>, Nuclei.Configuration.IConfiguration)
+  fullName.vb: Nuclei.Configuration.ConsulConfiguration.ConsulConfiguration(System.Collections.Generic.IEnumerable(Of Nuclei.Configuration.ConfigurationKeyBase), Nuclei.Configuration.IConfiguration)
+- uid: Nuclei.Configuration.ConsulConfiguration.KeyToValueMap
+  name: KeyToValueMap()
+  href: api/Nuclei.Configuration.ConsulConfiguration.html#Nuclei_Configuration_ConsulConfiguration_KeyToValueMap
+  commentId: M:Nuclei.Configuration.ConsulConfiguration.KeyToValueMap
+  fullName: Nuclei.Configuration.ConsulConfiguration.KeyToValueMap()
+- uid: Nuclei.Configuration.HierarchicalConfiguration
+  name: HierarchicalConfiguration
+  href: api/Nuclei.Configuration.HierarchicalConfiguration.html#Nuclei_Configuration_HierarchicalConfiguration
+  commentId: T:Nuclei.Configuration.HierarchicalConfiguration
+  fullName: Nuclei.Configuration.HierarchicalConfiguration
+- uid: Nuclei.Configuration.HierarchicalConfiguration.#ctor(System.Collections.Generic.IEnumerable{Nuclei.Configuration.IConfiguration})
+  name: HierarchicalConfiguration(IEnumerable<IConfiguration>)
+  href: api/Nuclei.Configuration.HierarchicalConfiguration.html#Nuclei_Configuration_HierarchicalConfiguration__ctor_System_Collections_Generic_IEnumerable_Nuclei_Configuration_IConfiguration__
+  commentId: M:Nuclei.Configuration.HierarchicalConfiguration.#ctor(System.Collections.Generic.IEnumerable{Nuclei.Configuration.IConfiguration})
+  name.vb: HierarchicalConfiguration(IEnumerable(Of IConfiguration))
+  fullName: Nuclei.Configuration.HierarchicalConfiguration.HierarchicalConfiguration(System.Collections.Generic.IEnumerable<Nuclei.Configuration.IConfiguration>)
+  fullName.vb: Nuclei.Configuration.HierarchicalConfiguration.HierarchicalConfiguration(System.Collections.Generic.IEnumerable(Of Nuclei.Configuration.IConfiguration))
+- uid: Nuclei.Configuration.HierarchicalConfiguration.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+  name: HasValueFor(ConfigurationKeyBase)
+  href: api/Nuclei.Configuration.HierarchicalConfiguration.html#Nuclei_Configuration_HierarchicalConfiguration_HasValueFor_Nuclei_Configuration_ConfigurationKeyBase_
+  commentId: M:Nuclei.Configuration.HierarchicalConfiguration.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+  fullName: Nuclei.Configuration.HierarchicalConfiguration.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+- uid: Nuclei.Configuration.HierarchicalConfiguration.Value``1(Nuclei.Configuration.ConfigurationKey{``0})
+  name: Value<T>(ConfigurationKey<T>)
+  href: api/Nuclei.Configuration.HierarchicalConfiguration.html#Nuclei_Configuration_HierarchicalConfiguration_Value__1_Nuclei_Configuration_ConfigurationKey___0__
+  commentId: M:Nuclei.Configuration.HierarchicalConfiguration.Value``1(Nuclei.Configuration.ConfigurationKey{``0})
+  name.vb: Value(Of T)(ConfigurationKey(Of T))
+  fullName: Nuclei.Configuration.HierarchicalConfiguration.Value<T>(Nuclei.Configuration.ConfigurationKey<T>)
+  fullName.vb: Nuclei.Configuration.HierarchicalConfiguration.Value(Of T)(Nuclei.Configuration.ConfigurationKey(Of T))
+- uid: Nuclei.Configuration.HierarchicalConfiguration.Value``1(Nuclei.Configuration.ConfigurationKeyBase)
+  name: Value<T>(ConfigurationKeyBase)
+  href: api/Nuclei.Configuration.HierarchicalConfiguration.html#Nuclei_Configuration_HierarchicalConfiguration_Value__1_Nuclei_Configuration_ConfigurationKeyBase_
+  commentId: M:Nuclei.Configuration.HierarchicalConfiguration.Value``1(Nuclei.Configuration.ConfigurationKeyBase)
+  name.vb: Value(Of T)(ConfigurationKeyBase)
+  fullName: Nuclei.Configuration.HierarchicalConfiguration.Value<T>(Nuclei.Configuration.ConfigurationKeyBase)
+  fullName.vb: Nuclei.Configuration.HierarchicalConfiguration.Value(Of T)(Nuclei.Configuration.ConfigurationKeyBase)
+- uid: Nuclei.Configuration.IConfiguration
+  name: IConfiguration
+  href: api/Nuclei.Configuration.IConfiguration.html#Nuclei_Configuration_IConfiguration
+  commentId: T:Nuclei.Configuration.IConfiguration
+  fullName: Nuclei.Configuration.IConfiguration
+- uid: Nuclei.Configuration.IConfiguration.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+  name: HasValueFor(ConfigurationKeyBase)
+  href: api/Nuclei.Configuration.IConfiguration.html#Nuclei_Configuration_IConfiguration_HasValueFor_Nuclei_Configuration_ConfigurationKeyBase_
+  commentId: M:Nuclei.Configuration.IConfiguration.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+  fullName: Nuclei.Configuration.IConfiguration.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+- uid: Nuclei.Configuration.IConfiguration.Value``1(Nuclei.Configuration.ConfigurationKey{``0})
+  name: Value<T>(ConfigurationKey<T>)
+  href: api/Nuclei.Configuration.IConfiguration.html#Nuclei_Configuration_IConfiguration_Value__1_Nuclei_Configuration_ConfigurationKey___0__
+  commentId: M:Nuclei.Configuration.IConfiguration.Value``1(Nuclei.Configuration.ConfigurationKey{``0})
+  name.vb: Value(Of T)(ConfigurationKey(Of T))
+  fullName: Nuclei.Configuration.IConfiguration.Value<T>(Nuclei.Configuration.ConfigurationKey<T>)
+  fullName.vb: Nuclei.Configuration.IConfiguration.Value(Of T)(Nuclei.Configuration.ConfigurationKey(Of T))
+- uid: Nuclei.Configuration.IConfiguration.Value``1(Nuclei.Configuration.ConfigurationKeyBase)
+  name: Value<T>(ConfigurationKeyBase)
+  href: api/Nuclei.Configuration.IConfiguration.html#Nuclei_Configuration_IConfiguration_Value__1_Nuclei_Configuration_ConfigurationKeyBase_
+  commentId: M:Nuclei.Configuration.IConfiguration.Value``1(Nuclei.Configuration.ConfigurationKeyBase)
+  name.vb: Value(Of T)(ConfigurationKeyBase)
+  fullName: Nuclei.Configuration.IConfiguration.Value<T>(Nuclei.Configuration.ConfigurationKeyBase)
+  fullName.vb: Nuclei.Configuration.IConfiguration.Value(Of T)(Nuclei.Configuration.ConfigurationKeyBase)
+- uid: Nuclei.Configuration.NullConfiguration
+  name: NullConfiguration
+  href: api/Nuclei.Configuration.NullConfiguration.html#Nuclei_Configuration_NullConfiguration
+  commentId: T:Nuclei.Configuration.NullConfiguration
+  fullName: Nuclei.Configuration.NullConfiguration
+- uid: Nuclei.Configuration.NullConfiguration.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+  name: HasValueFor(ConfigurationKeyBase)
+  href: api/Nuclei.Configuration.NullConfiguration.html#Nuclei_Configuration_NullConfiguration_HasValueFor_Nuclei_Configuration_ConfigurationKeyBase_
+  commentId: M:Nuclei.Configuration.NullConfiguration.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+  fullName: Nuclei.Configuration.NullConfiguration.HasValueFor(Nuclei.Configuration.ConfigurationKeyBase)
+- uid: Nuclei.Configuration.NullConfiguration.Value``1(Nuclei.Configuration.ConfigurationKey{``0})
+  name: Value<T>(ConfigurationKey<T>)
+  href: api/Nuclei.Configuration.NullConfiguration.html#Nuclei_Configuration_NullConfiguration_Value__1_Nuclei_Configuration_ConfigurationKey___0__
+  commentId: M:Nuclei.Configuration.NullConfiguration.Value``1(Nuclei.Configuration.ConfigurationKey{``0})
+  name.vb: Value(Of T)(ConfigurationKey(Of T))
+  fullName: Nuclei.Configuration.NullConfiguration.Value<T>(Nuclei.Configuration.ConfigurationKey<T>)
+  fullName.vb: Nuclei.Configuration.NullConfiguration.Value(Of T)(Nuclei.Configuration.ConfigurationKey(Of T))
+- uid: Nuclei.Configuration.NullConfiguration.Value``1(Nuclei.Configuration.ConfigurationKeyBase)
+  name: Value<T>(ConfigurationKeyBase)
+  href: api/Nuclei.Configuration.NullConfiguration.html#Nuclei_Configuration_NullConfiguration_Value__1_Nuclei_Configuration_ConfigurationKeyBase_
+  commentId: M:Nuclei.Configuration.NullConfiguration.Value``1(Nuclei.Configuration.ConfigurationKeyBase)
+  name.vb: Value(Of T)(ConfigurationKeyBase)
+  fullName: Nuclei.Configuration.NullConfiguration.Value<T>(Nuclei.Configuration.ConfigurationKeyBase)
+  fullName.vb: Nuclei.Configuration.NullConfiguration.Value(Of T)(Nuclei.Configuration.ConfigurationKeyBase)
