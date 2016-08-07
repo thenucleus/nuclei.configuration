@@ -162,3 +162,8 @@ $RECYCLE.BIN/
 
 # Mac crap
 .DS_Store
+AssemblyInfo.Company.cs
+*.ide
+_site/
+.vs/
+doc/Nuclei.Configuration.Documentation/docfx.json

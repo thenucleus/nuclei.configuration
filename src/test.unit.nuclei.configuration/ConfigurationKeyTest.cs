@@ -1,6 +1,7 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright company="Nuclei">
-//     Copyright 2013 Nuclei. Licensed under the Apache License, Version 2.0.
+// <copyright company="TheNucleus">
+// Copyright (c) TheNucleus. All rights reserved.
+// Licensed under the Apache License, Version 2.0 license. See LICENCE.md file in the project root for full license information.
 // </copyright>
 //-----------------------------------------------------------------------
 
@@ -14,36 +15,45 @@ using NUnit.Framework;
 namespace Nuclei.Configuration
 {
     [TestFixture]
-    [SuppressMessage("Microsoft.StyleCop.CSharp.DocumentationRules", "SA1600:ElementsMustBeDocumented",
+    [SuppressMessage(
+        "Microsoft.StyleCop.CSharp.DocumentationRules",
+        "SA1600:ElementsMustBeDocumented",
         Justification = "Unit tests do not need documentation.")]
     public sealed class ConfigurationKeyTest : EqualityContractVerifierTest
     {
-        private sealed class MessageIdEqualityContractVerifier : EqualityContractVerifier<ConfigurationKey>
+        private sealed class MessageIdEqualityContractVerifier : EqualityContractVerifier<ConfigurationKeyBase>
         {
-            private readonly ConfigurationKey m_First
-                = new ConfigurationKey("a", typeof(string));
+            private readonly ConfigurationKeyBase _first
+                = new ConfigurationKey<string>("a");
 
-            private readonly ConfigurationKey m_Second
-                 = new ConfigurationKey("b", typeof(int));
+            private readonly ConfigurationKeyBase _second
+                 = new ConfigurationKey<int>("b");
 
-            protected override ConfigurationKey Copy(ConfigurationKey original)
+            protected override ConfigurationKeyBase Copy(ConfigurationKeyBase original)
             {
-                return new ConfigurationKey(original.Name, original.TranslateTo);
-            }
-
-            protected override ConfigurationKey FirstInstance
-            {
-                get
+                if (original == _first)
                 {
-                    return m_First;
+                    return new ConfigurationKey<string>(original.Name);
+                }
+                else
+                {
+                    return new ConfigurationKey<int>(original.Name);
                 }
             }
 
-            protected override ConfigurationKey SecondInstance
+            protected override ConfigurationKeyBase FirstInstance
             {
                 get
                 {
-                    return m_Second;
+                    return _first;
+                }
+            }
+
+            protected override ConfigurationKeyBase SecondInstance
+            {
+                get
+                {
+                    return _second;
                 }
             }
 
@@ -56,35 +66,35 @@ namespace Nuclei.Configuration
             }
         }
 
-        private sealed class MessageIdHashcodeContractVerfier : HashcodeContractVerifier
+        private sealed class MessageIdHashCodeContractVerfier : HashCodeContractVerifier
         {
-            private readonly IEnumerable<ConfigurationKey> m_DistinctInstances
-                = new List<ConfigurationKey> 
+            private readonly IEnumerable<ConfigurationKeyBase> _distinctInstances
+                = new List<ConfigurationKeyBase>
                      {
-                        new ConfigurationKey("a", typeof(string)),
-                        new ConfigurationKey("b", typeof(int)),
-                        new ConfigurationKey("c", typeof(double)),
-                        new ConfigurationKey("d", typeof(float)),
-                        new ConfigurationKey("e", typeof(string)),
-                        new ConfigurationKey("f", typeof(Version)),
-                        new ConfigurationKey("g", typeof(object)),
+                        new ConfigurationKey<string>("a"),
+                        new ConfigurationKey<int>("b"),
+                        new ConfigurationKey<double>("c"),
+                        new ConfigurationKey<float>("d"),
+                        new ConfigurationKey<string>("e"),
+                        new ConfigurationKey<Version>("f"),
+                        new ConfigurationKey<object>("g"),
                      };
 
-            protected override IEnumerable<int> GetHashcodes()
+            protected override IEnumerable<int> GetHashCodes()
             {
-                return m_DistinctInstances.Select(i => i.GetHashCode());
+                return _distinctInstances.Select(i => i.GetHashCode());
             }
         }
 
-        private readonly MessageIdHashcodeContractVerfier m_HashcodeVerifier = new MessageIdHashcodeContractVerfier();
+        private readonly MessageIdHashCodeContractVerfier _hashCodeVerifier = new MessageIdHashCodeContractVerfier();
 
-        private readonly MessageIdEqualityContractVerifier m_EqualityVerifier = new MessageIdEqualityContractVerifier();
+        private readonly MessageIdEqualityContractVerifier _equalityVerifier = new MessageIdEqualityContractVerifier();
 
-        protected override HashcodeContractVerifier HashContract
+        protected override HashCodeContractVerifier HashContract
         {
             get
             {
-                return m_HashcodeVerifier;
+                return _hashCodeVerifier;
             }
         }
 
@@ -92,7 +102,7 @@ namespace Nuclei.Configuration
         {
             get
             {
-                return m_EqualityVerifier;
+                return _equalityVerifier;
             }
         }
 
@@ -100,11 +110,10 @@ namespace Nuclei.Configuration
         public void Create()
         {
             var name = "a";
-            var type = typeof(string);
-            var key = new ConfigurationKey(name, type);
+            var key = new ConfigurationKey<string>(name);
 
             Assert.AreEqual(name, key.Name);
-            Assert.AreEqual(type, key.TranslateTo);
+            Assert.AreEqual(typeof(string), key.TranslateTo);
         }
     }
 }

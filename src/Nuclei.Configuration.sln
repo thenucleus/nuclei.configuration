@@ -1,0 +1,78 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0245F9D1-9F8D-43AA-8C61-69370002790D}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitattributes = ..\.gitattributes
+		..\.gitignore = ..\.gitignore
+		..\LICENSE.md = ..\LICENSE.md
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{FE08C557-2C2F-409C-A106-C12F6A6E8C40}"
+	ProjectSection(SolutionItems) = preProject
+		..\nuget.config = ..\nuget.config
+		..\packages.config = ..\packages.config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclei.Configuration", "nuclei.configuration\Nuclei.Configuration.csproj", "{62E77B2F-34EE-4258-B1C7-9F30EB80AE12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.Unit.Nuclei.Configuration", "test.unit.nuclei.configuration\Test.Unit.Nuclei.Configuration.csproj", "{55441F18-9C0A-4F09-97D9-CA7CCD21CA50}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{525FF8D6-BF44-4BEB-BEF4-DD767DC0E722}"
+	ProjectSection(SolutionItems) = preProject
+		base.props = base.props
+		..\build.settings.props = ..\build.settings.props
+		..\deploy.settings.props = ..\deploy.settings.props
+		..\entrypoint.msbuild = ..\entrypoint.msbuild
+		..\settings.props = ..\settings.props
+		..\test.settings.props = ..\test.settings.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "codeanalysis", "codeanalysis", "{4058FF97-0E99-419F-9E44-C89432CE5199}"
+	ProjectSection(SolutionItems) = preProject
+		..\CustomDictionary.xml = ..\CustomDictionary.xml
+		default.ruleset = default.ruleset
+		stylecop.json = stylecop.json
+		test.ruleset = test.ruleset
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclei.Configuration.Documentation", "..\doc\Nuclei.Configuration.Documentation\Nuclei.Configuration.Documentation.csproj", "{86992BDD-28C9-4ED2-B304-B2B84006A7FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuclei.Configuration.Samples", "..\doc\Nuclei.Configuration.Samples\Nuclei.Configuration.Samples.csproj", "{4DFE1364-BCA7-4439-92AD-58B503EFA746}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Deploy|Any CPU = Deploy|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62E77B2F-34EE-4258-B1C7-9F30EB80AE12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E77B2F-34EE-4258-B1C7-9F30EB80AE12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E77B2F-34EE-4258-B1C7-9F30EB80AE12}.Deploy|Any CPU.ActiveCfg = Deploy|Any CPU
+		{62E77B2F-34EE-4258-B1C7-9F30EB80AE12}.Deploy|Any CPU.Build.0 = Deploy|Any CPU
+		{62E77B2F-34EE-4258-B1C7-9F30EB80AE12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E77B2F-34EE-4258-B1C7-9F30EB80AE12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55441F18-9C0A-4F09-97D9-CA7CCD21CA50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55441F18-9C0A-4F09-97D9-CA7CCD21CA50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55441F18-9C0A-4F09-97D9-CA7CCD21CA50}.Deploy|Any CPU.ActiveCfg = Deploy|Any CPU
+		{55441F18-9C0A-4F09-97D9-CA7CCD21CA50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55441F18-9C0A-4F09-97D9-CA7CCD21CA50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86992BDD-28C9-4ED2-B304-B2B84006A7FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86992BDD-28C9-4ED2-B304-B2B84006A7FA}.Deploy|Any CPU.ActiveCfg = Deploy|Any CPU
+		{86992BDD-28C9-4ED2-B304-B2B84006A7FA}.Deploy|Any CPU.Build.0 = Deploy|Any CPU
+		{86992BDD-28C9-4ED2-B304-B2B84006A7FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DFE1364-BCA7-4439-92AD-58B503EFA746}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DFE1364-BCA7-4439-92AD-58B503EFA746}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DFE1364-BCA7-4439-92AD-58B503EFA746}.Deploy|Any CPU.ActiveCfg = Deploy|Any CPU
+		{4DFE1364-BCA7-4439-92AD-58B503EFA746}.Deploy|Any CPU.Build.0 = Deploy|Any CPU
+		{4DFE1364-BCA7-4439-92AD-58B503EFA746}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DFE1364-BCA7-4439-92AD-58B503EFA746}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
