@@ -109,32 +109,35 @@ namespace Nuclei.Configuration
                 throw new ArgumentNullException("configuration");
             }
 
-            var consulConfig = new ConsulClientConfiguration();
-            if (configuration.HasValueFor(ConfigurationKeys.ConsulAddress))
-            {
-                consulConfig.Address = new Uri(configuration.Value(ConfigurationKeys.ConsulAddress));
-            }
+            Action<ConsulClientConfiguration> configurationAction =
+                consulConfig =>
+                {
+                    if (configuration.HasValueFor(ConfigurationKeys.ConsulAddress))
+                    {
+                        consulConfig.Address = new Uri(configuration.Value(ConfigurationKeys.ConsulAddress));
+                    }
 
-            if (configuration.HasValueFor(ConfigurationKeys.ConsulDatacenter))
-            {
-                consulConfig.Datacenter = configuration.Value(ConfigurationKeys.ConsulDatacenter);
-            }
+                    if (configuration.HasValueFor(ConfigurationKeys.ConsulDatacenter))
+                    {
+                        consulConfig.Datacenter = configuration.Value(ConfigurationKeys.ConsulDatacenter);
+                    }
 
-            if (configuration.HasValueFor(ConfigurationKeys.ConsulToken))
-            {
-                consulConfig.Token = configuration.Value(ConfigurationKeys.ConsulToken);
-            }
+                    if (configuration.HasValueFor(ConfigurationKeys.ConsulToken))
+                    {
+                        consulConfig.Token = configuration.Value(ConfigurationKeys.ConsulToken);
+                    }
 
-            if (configuration.HasValueFor(ConfigurationKeys.ConsulWaitTimeInMilliseconds))
-            {
-                consulConfig.WaitTime = TimeSpan.FromMilliseconds(configuration.Value(ConfigurationKeys.ConsulWaitTimeInMilliseconds));
-            }
+                    if (configuration.HasValueFor(ConfigurationKeys.ConsulWaitTimeInMilliseconds))
+                    {
+                        consulConfig.WaitTime = TimeSpan.FromMilliseconds(configuration.Value(ConfigurationKeys.ConsulWaitTimeInMilliseconds));
+                    }
+                };
 
             var configPrefix = configuration.HasValueFor(ConfigurationKeys.ConsulConfigurationPrefix)
                 ? configuration.Value(ConfigurationKeys.ConsulConfigurationPrefix)
                 : string.Empty;
 
-            using (var client = new ConsulClient(consulConfig))
+            using (var client = new ConsulClient(configurationAction))
             {
                 var task = client.KV.List(configPrefix);
                 task.ContinueWith(
