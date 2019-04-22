@@ -208,7 +208,9 @@ namespace Nuclei.Configuration
                 });
         }
 
+#pragma warning disable CS0618 // Type or member is obsolete
         [TestFixtureTearDown]
+#pragma warning restore CS0618 // Type or member is obsolete
         public void AfterTests()
         {
             if (_consulApplication != null)
@@ -218,7 +220,9 @@ namespace Nuclei.Configuration
             }
         }
 
+#pragma warning disable CS0618 // Type or member is obsolete
         [TestFixtureSetUp]
+#pragma warning restore CS0618 // Type or member is obsolete
         public void BeforeTests()
         {
             _subConfiguration = StoreConfiguration(
